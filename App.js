@@ -1,21 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { View } from 'react-native';
+import DeckList from './screens/DeckList/DeckList';
+import AddDeck from './screens/AddDeck/AddDeck';
+import AddQuestion from './screens/AddQuestion/AddQuestion';
+import Quiz from './screens/Quiz/Quiz';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <View>
+      <DeckList />
+      {/* <AddDeck /> */}
+      {/* <AddQuestion /> */}
+      {/* <Quiz /> */}
       <StatusBar style="auto" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
