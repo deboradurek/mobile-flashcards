@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import DeckCard from './components/DeckCard';
 import styled from 'styled-components';
 import Title from '../../components/Title';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import DeckCard from '../../components/DeckCard';
+import { Container } from '../../styles/shared';
 
 class DeckList extends Component {
   render() {
@@ -18,8 +19,3 @@ class DeckList extends Component {
 }
 
 export default DeckList;
-
-const Container = styled.View`
-  flex: 1;
-  align-items: center;
-`;
