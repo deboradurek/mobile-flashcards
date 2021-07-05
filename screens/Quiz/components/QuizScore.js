@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
+import { Container } from '../../../styles/shared';
 
 class QuizScore extends Component {
   render() {
     return (
-      <View>
+      <Container>
         <Text>QuizScore</Text>
-      </View>
+      </Container>
     );
   }
 }
