@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import styled from 'styled-components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Title from '../../components/Title';
-import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
+import FilledTouchableOpacity from '../../components/FilledTouchableOpacity';
 
 class AddQuestion extends Component {
   render() {
@@ -24,7 +24,7 @@ class AddQuestion extends Component {
               placeholder="Enter the answer"
               enablesReturnKeyAutomatically
             />
-            <CustomTouchableOpacity>Submit</CustomTouchableOpacity>
+            <FilledTouchableOpacity>Submit</FilledTouchableOpacity>
           </View>
         </SafeAreaView>
       </Container>

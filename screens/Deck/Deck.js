@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
-import DeckCard from '../DeckList/components/DeckCard';
-import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
+import FilledTouchableOpacity from '../../components/FilledTouchableOpacity';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import DeckCard from '../../components/DeckCard';
 
 class Deck extends Component {
   render() {
@@ -12,12 +12,12 @@ class Deck extends Component {
         <SafeAreaView>
           <DeckCard />
           <View>
-            <CustomTouchableOpacity>
+            <FilledTouchableOpacity>
               <Text>Add Card</Text>
-            </CustomTouchableOpacity>
-            <CustomTouchableOpacity>
+            </FilledTouchableOpacity>
+            <FilledTouchableOpacity>
               <Text>Start Quiz</Text>
-            </CustomTouchableOpacity>
+            </FilledTouchableOpacity>
           </View>
         </SafeAreaView>
       </Container>

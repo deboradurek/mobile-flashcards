@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import styled from 'styled-components';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Title from '../../components/Title';
-import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
+import FilledTouchableOpacity from '../../components/FilledTouchableOpacity';
 
 class AddDeck extends Component {
   render() {
@@ -19,7 +19,7 @@ class AddDeck extends Component {
               maxLength={30}
               enablesReturnKeyAutomatically
             />
-            <CustomTouchableOpacity>Submit</CustomTouchableOpacity>
+            <FilledTouchableOpacity>Submit</FilledTouchableOpacity>
           </View>
         </SafeAreaView>
       </Container>
