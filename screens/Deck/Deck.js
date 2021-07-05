@@ -2,21 +2,24 @@ import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import styled from 'styled-components';
 import DeckCard from '../DeckList/components/DeckCard';
-import CustomButton from '../../components/CustomButton';
+import CustomTouchableOpacity from '../../components/CustomTouchableOpacity';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 class Deck extends Component {
   render() {
     return (
       <Container>
-        <DeckCard />
-        <View>
-          <CustomButton>
-            <Text>Add Card</Text>
-          </CustomButton>
-          <CustomButton>
-            <Text>Start Quiz</Text>
-          </CustomButton>
-        </View>
+        <SafeAreaView>
+          <DeckCard />
+          <View>
+            <CustomTouchableOpacity>
+              <Text>Add Card</Text>
+            </CustomTouchableOpacity>
+            <CustomTouchableOpacity>
+              <Text>Start Quiz</Text>
+            </CustomTouchableOpacity>
+          </View>
+        </SafeAreaView>
       </Container>
     );
   }
