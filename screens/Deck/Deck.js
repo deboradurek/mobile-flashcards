@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
+import styled from 'styled-components';
+import DeckCard from '../DeckList/components/DeckCard';
+import CustomButton from '../../components/CustomButton';
 
 class Deck extends Component {
   render() {
     return (
-      <View>
+      <Container>
+        <DeckCard />
         <View>
-          <Text>Deck One</Text>
-          <Text>2 cards</Text>
+          <CustomButton>
+            <Text>Add Card</Text>
+          </CustomButton>
+          <CustomButton>
+            <Text>Start Quiz</Text>
+          </CustomButton>
         </View>
-        <View>
-          <Text>Deck Two</Text>
-          <Text>6 cards</Text>
-        </View>
-      </View>
+      </Container>
     );
   }
 }
+
+const Container = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
 
 export default Deck;
