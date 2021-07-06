@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import styled from 'styled-components';
-import { lightGray } from '../utils/colors';
+import { MainTitle } from '../styles/shared';
 
 function Title({ children }) {
   return (
@@ -12,9 +11,3 @@ function Title({ children }) {
 }
 
 export default Title;
-
-const MainTitle = styled.Text`
-  /* margin-top: 100px; */
-  font-size: 35px;
-  /* color: ${lightGray}; */
-`;

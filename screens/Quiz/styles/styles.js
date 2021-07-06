@@ -18,6 +18,16 @@ export const Card = styled.View`
   margin-bottom: 20px;
 `;
 
+export const CardScore = styled.View`
+  border: 1px solid green;
+  padding: 30px;
+  border-radius: 12px;
+  height: 210px;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+`;
+
 export const QAHeaderView = styled.View`
   border-bottom-width: 1px;
   border-bottom-color: #999;

@@ -13,12 +13,9 @@ class Quiz extends Component {
     return (
       <Container>
         <StyledSafeAreaView>
-          <ProgressBar>
-            <Text>1 / 7</Text>
-          </ProgressBar>
           {/* <QuizQuestion /> */}
-          <QuizAnswer />
-          {/* <QuizScore /> */}
+          {/* <QuizAnswer /> */}
+          <QuizScore />
         </StyledSafeAreaView>
       </Container>
     );

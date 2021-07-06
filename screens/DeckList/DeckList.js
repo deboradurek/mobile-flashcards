@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import Title from '../../components/Title';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import DeckCard from '../../components/DeckCard';
-import { Container } from '../../styles/shared';
+import { Container, StyledSafeAreaView } from '../../styles/shared';
 
 class DeckList extends Component {
   render() {
     return (
       <Container>
-        <SafeAreaView>
+        <StyledSafeAreaView>
           <Title>Your Decks</Title>
           <DeckCard />
-        </SafeAreaView>
+        </StyledSafeAreaView>
       </Container>
     );
   }

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { Container } from '../../../styles/shared';
 import { Card, QAHeaderView, QAHeader, QAText, QAButtonView } from '../styles/styles';
-import styled from 'styled-components';
 
 class QuizQuestion extends Component {
   render() {
     return (
       <View>
+        <ProgressBar>
+          <Text>1 / 7</Text>
+        </ProgressBar>
         <Card>
           <QAHeaderView>
             <QAHeader>Question</QAHeader>

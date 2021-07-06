@@ -1,26 +1,15 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import { lightGray } from '../utils/colors';
+import { View, Text } from 'react-native';
 
 class DeckCard extends Component {
   render() {
     return (
-      <Container>
-        <Txt>Deck One</Txt>
-        <Txt>10 cards</Txt>
-      </Container>
+      <View>
+        <Text>Deck One</Text>
+        <Text>10 cards</Text>
+      </View>
     );
   }
 }
 
 export default DeckCard;
-
-const Container = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Txt = styled.Text`
-  /* color: ${lightGray}; */
-`;
