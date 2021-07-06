@@ -2,14 +2,15 @@ import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import CustomStatusBar from './components/CustomStatusBar';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { darkestGray } from './utils/colors';
 import DeckList from './screens/DeckList/DeckList';
 import Deck from './screens/Deck/Deck';
 import AddDeck from './screens/AddDeck/AddDeck';
 import AddQuestion from './screens/AddQuestion/AddQuestion';
 import Quiz from './screens/Quiz/Quiz';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 const MyTheme = {
   ...DefaultTheme,
@@ -25,7 +26,6 @@ const Tab = createBottomTabNavigator();
 function TabNav() {
   return (
     <Tab.Navigator
-      initialRouteName="DeckList"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           switch (route.name) {
@@ -59,12 +59,29 @@ function TabNav() {
   );
 }
 
+// Create StackNavigator
+const Stack = createStackNavigator();
+
+function StackNav() {
+  return (
+    <Stack.Navigator initialRouteName="Deck List">
+      <Stack.Screen name="Deck List" component={TabNav} options={{ headerShown: false }} />
+      <Stack.Screen
+        name="Add Deck"
+        component={AddDeck}
+        options={{ title: 'Add Deck', headerBackTitleVisible: false }}
+      />
+    </Stack.Navigator>
+  );
+}
+
 export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer theme={MyTheme}>
         <CustomStatusBar backgroundColor={darkestGray} barStyle="light-content" />
-        <TabNav />
+        <StackNav />
+        {/* <TabNav /> */}
         {/* <DeckList /> */}
         {/* <Deck /> */}
         {/* <AddDeck /> */}
