@@ -8,16 +8,6 @@ export const ProgressBar = styled.View`
   padding: 8px 5px;
 `;
 
-export const Card = styled.View`
-  border: 1px solid green;
-  padding: 30px;
-  border-radius: 12px;
-  height: 450px;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 20px;
-`;
-
 export const CardScore = styled.View`
   border: 1px solid green;
   padding: 30px;

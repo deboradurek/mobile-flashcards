@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { CardDeck, DeckHeader, ThinText } from '../styles/shared';
 
 class DeckCard extends Component {
   render() {
     return (
-      <View>
-        <Text>Deck One</Text>
-        <Text>10 cards</Text>
-      </View>
+      <CardDeck>
+        <DeckHeader>Geography</DeckHeader>
+        <ThinText>10 cards</ThinText>
+      </CardDeck>
     );
   }
 }
