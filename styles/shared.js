@@ -48,7 +48,7 @@ export const CardDeck = styled.View`
   align-items: center;
   width: 100%;
   margin-bottom: 20px;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.34);
 `;
 
 export const DeckHeader = styled.Text`
