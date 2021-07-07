@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StyledButton from '../../components/StyledButton';
 import DeckCard from '../../components/DeckCard';
-import { Container, DeckContainer, LightText } from '../../styles/shared';
+import { Container, DeckContainer } from '../../styles/shared';
 
 class Deck extends Component {
   render() {
@@ -9,11 +9,11 @@ class Deck extends Component {
       <Container>
         <DeckCard />
         <DeckContainer>
-          <StyledButton>
-            <LightText>Add Card</LightText>
+          <StyledButton onPress={() => this.props.navigation.navigate('AddCard')}>
+            Add Card
           </StyledButton>
-          <StyledButton>
-            <LightText>Start Quiz</LightText>
+          <StyledButton onPress={() => this.props.navigation.navigate('Quiz')}>
+            Start Quiz
           </StyledButton>
         </DeckContainer>
       </Container>

@@ -10,6 +10,7 @@ import DeckList from './screens/DeckList/DeckList';
 import Deck from './screens/Deck/Deck';
 import AddDeck from './screens/AddDeck/AddDeck';
 import AddCard from './screens/AddCard/AddCard';
+import QuizQuestion from './screens/Quiz/components/QuizQuestion';
 import Quiz from './screens/Quiz/Quiz';
 
 const MyTheme = {
@@ -99,6 +100,22 @@ function StackNav() {
           },
           headerBackTitleVisible: true,
           title: 'Add Card',
+        })}
+      />
+      <Stack.Screen
+        name="Quiz"
+        component={Quiz}
+        options={() => ({
+          headerTintColor: '#E8E8E8',
+          headerStyle: {
+            backgroundColor: '#222831',
+            shadowOffset: {
+              width: 0,
+              height: 0,
+            },
+          },
+          headerBackTitleVisible: true,
+          title: 'Quiz',
         })}
       />
     </Stack.Navigator>
