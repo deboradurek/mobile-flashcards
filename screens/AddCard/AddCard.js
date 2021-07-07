@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Title from '../../components/Title';
-import StyledButton from '../../components/StyledButton';
+import { FilledButton } from '../../components/StyledButtons';
 import {
   Container,
   FullWidthContainer,
@@ -25,7 +25,7 @@ class AddCard extends Component {
               value={() => {}}
               placeholder="Enter the answer"
             />
-            <StyledButton>Submit</StyledButton>
+            <FilledButton>Submit</FilledButton>
           </InputContainer>
         </FullWidthContainer>
       </Container>

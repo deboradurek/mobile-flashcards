@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import StyledButton from '../../../components/StyledButton';
+import { FilledButton } from '../../../components/StyledButtons';
 import Title from '../../../components/Title';
 import { CenterContainer, Container, FullWidthContainer } from '../../../styles/shared';
 import { CardScore, ProgressBar } from '../styles/styles';
@@ -19,12 +19,12 @@ class QuizScore extends Component {
           </ProgressBar>
 
           <View>
-            <StyledButton>
+            <FilledButton>
               <Text>Restart</Text>
-            </StyledButton>
-            <StyledButton>
+            </FilledButton>
+            <FilledButton>
               <Text>Back to Decks</Text>
-            </StyledButton>
+            </FilledButton>
           </View>
         </FullWidthContainer>
       </Container>

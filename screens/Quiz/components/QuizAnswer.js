@@ -18,7 +18,7 @@ class QuizAnswer extends Component {
             <View>
               <QAText>Yes!</QAText>
             </View>
-            <TextButton onPress={() => this.props.navigation.navigate('QuizQuestion')}>
+            <TextButton onPress={() => this.props.navigation.navigate('Quiz')}>
               Back to Question
             </TextButton>
           </LargeCardContainer>

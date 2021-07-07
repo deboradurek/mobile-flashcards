@@ -16,7 +16,7 @@ export const FullWidthContainer = styled.View`
   width: 100%;
 `;
 
-export const StyledButtonContainer = styled(FullWidthContainer)`
+export const LargeButtonContainer = styled(FullWidthContainer)`
   margin-top: 20px;
 `;
 
@@ -101,6 +101,11 @@ export const FilledTouchableOpacity = styled.TouchableOpacity`
   margin-top: 18px;
   border-radius: 8px;
   align-items: center;
+`;
+
+export const OutlinedTouchableOpacity = styled(FilledTouchableOpacity)`
+  background-color: #393e46;
+  border: 2px solid #f96d00;
 `;
 
 export const LightText = styled.Text`

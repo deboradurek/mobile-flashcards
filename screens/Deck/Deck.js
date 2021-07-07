@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import StyledButton from '../../components/StyledButton';
+import { FilledButton, OutlinedButton } from '../../components/StyledButtons';
 import DeckCard from '../../components/DeckCard';
 import {
   Container,
   DeckContainer,
-  LargeCardContainer,
-  StyledButtonContainer,
+  FilledButtonContainer,
+  LargeButtonContainer,
 } from '../../styles/shared';
 
 class Deck extends Component {
@@ -15,14 +15,14 @@ class Deck extends Component {
         <DeckContainer>
           <DeckCard />
         </DeckContainer>
-        <StyledButtonContainer>
-          <StyledButton onPress={() => this.props.navigation.navigate('AddCard')}>
+        <LargeButtonContainer>
+          <OutlinedButton onPress={() => this.props.navigation.navigate('AddCard')}>
             Add Card
-          </StyledButton>
-          <StyledButton onPress={() => this.props.navigation.navigate('QuizQuestion')}>
+          </OutlinedButton>
+          <FilledButton onPress={() => this.props.navigation.navigate('Quiz')}>
             Start Quiz
-          </StyledButton>
-        </StyledButtonContainer>
+          </FilledButton>
+        </LargeButtonContainer>
       </Container>
     );
   }

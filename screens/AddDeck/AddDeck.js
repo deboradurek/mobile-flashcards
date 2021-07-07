@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Title from '../../components/Title';
-import StyledButton from '../../components/StyledButton';
+import { FilledButton } from '../../components/StyledButtons';
 import {
   Container,
   FullWidthContainer,
@@ -21,7 +21,7 @@ class AddDeck extends Component {
               placeholder="Enter deck's name"
               maxLength={30}
             />
-            <StyledButton>Submit</StyledButton>
+            <FilledButton>Create Deck</FilledButton>
           </InputContainer>
         </FullWidthContainer>
       </Container>
