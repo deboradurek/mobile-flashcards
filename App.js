@@ -29,9 +29,9 @@ function TabNav() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ color, size }) => {
           switch (route.name) {
-            case 'Deck List':
+            case 'DeckList':
               return <MaterialCommunityIcons name="cards" size={size} color={color} />;
-            case 'Add Deck':
+            case 'AddDeck':
               return <MaterialIcons name="library-add" size={size} color={color} />;
           }
         },
@@ -53,8 +53,8 @@ function TabNav() {
         },
       }}
     >
-      <Tab.Screen name="Deck List" component={DeckList} />
-      <Tab.Screen name="Add Deck" component={AddDeck} />
+      <Tab.Screen name="DeckList" component={DeckList} options={{ title: 'Deck List' }} />
+      <Tab.Screen name="AddDeck" component={AddDeck} options={{ title: 'Add Deck' }} />
     </Tab.Navigator>
   );
 }
@@ -64,12 +64,22 @@ const Stack = createStackNavigator();
 
 function StackNav() {
   return (
-    <Stack.Navigator initialRouteName="Deck List">
-      <Stack.Screen name="Deck List" component={TabNav} options={{ headerShown: false }} />
+    <Stack.Navigator initialRouteName="DeckList">
+      <Stack.Screen name="DeckList" component={TabNav} options={{ headerShown: false }} />
       <Stack.Screen
-        name="Add Deck"
-        component={AddDeck}
-        options={{ title: 'Add Deck', headerBackTitleVisible: false }}
+        name="Deck"
+        component={Deck}
+        options={() => ({
+          headerTintColor: '#E8E8E8',
+          headerStyle: {
+            backgroundColor: '#222831',
+            shadowOffset: {
+              width: 0,
+              height: 0,
+            },
+          },
+          headerBackTitleVisible: true,
+        })}
       />
     </Stack.Navigator>
   );
@@ -77,17 +87,15 @@ function StackNav() {
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <NavigationContainer theme={MyTheme}>
-        <CustomStatusBar backgroundColor={darkestGray} barStyle="light-content" />
-        <StackNav />
-        {/* <TabNav /> */}
-        {/* <DeckList /> */}
-        {/* <Deck /> */}
-        {/* <AddDeck /> */}
-        {/* <AddQuestion /> */}
-        {/* <Quiz /> */}
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <NavigationContainer theme={MyTheme}>
+      <CustomStatusBar backgroundColor={darkestGray} barStyle="light-content" />
+      <StackNav />
+      {/* <TabNav /> */}
+      {/* <DeckList /> */}
+      {/* <Deck /> */}
+      {/* <AddDeck /> */}
+      {/* <AddQuestion /> */}
+      {/* <Quiz /> */}
+    </NavigationContainer>
   );
 }
