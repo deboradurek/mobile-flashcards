@@ -4,7 +4,7 @@ import Title from '../../components/Title';
 import StyledButton from '../../components/StyledButton';
 import { Container, StyledTextInput } from '../../styles/shared';
 
-class AddQuestion extends Component {
+class AddCard extends Component {
   render() {
     return (
       <Container>
@@ -29,4 +29,4 @@ class AddQuestion extends Component {
   }
 }
 
-export default AddQuestion;
+export default AddCard;

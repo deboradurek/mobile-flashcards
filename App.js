@@ -9,7 +9,7 @@ import { darkestGray } from './utils/colors';
 import DeckList from './screens/DeckList/DeckList';
 import Deck from './screens/Deck/Deck';
 import AddDeck from './screens/AddDeck/AddDeck';
-import AddQuestion from './screens/AddQuestion/AddQuestion';
+import AddCard from './screens/AddCard/AddCard';
 import Quiz from './screens/Quiz/Quiz';
 
 const MyTheme = {
@@ -65,7 +65,11 @@ const Stack = createStackNavigator();
 function StackNav() {
   return (
     <Stack.Navigator initialRouteName="DeckList">
-      <Stack.Screen name="DeckList" component={TabNav} options={{ headerShown: false }} />
+      <Stack.Screen
+        name="DeckList"
+        component={TabNav}
+        options={{ headerShown: false, title: 'Deck List' }}
+      />
       <Stack.Screen
         name="Deck"
         component={Deck}
@@ -81,6 +85,22 @@ function StackNav() {
           headerBackTitleVisible: true,
         })}
       />
+      <Stack.Screen
+        name="AddCard"
+        component={AddCard}
+        options={() => ({
+          headerTintColor: '#E8E8E8',
+          headerStyle: {
+            backgroundColor: '#222831',
+            shadowOffset: {
+              width: 0,
+              height: 0,
+            },
+          },
+          headerBackTitleVisible: true,
+          title: 'Add Card',
+        })}
+      />
     </Stack.Navigator>
   );
 }
@@ -94,7 +114,7 @@ export default function App() {
       {/* <DeckList /> */}
       {/* <Deck /> */}
       {/* <AddDeck /> */}
-      {/* <AddQuestion /> */}
+      {/* <AddCard /> */}
       {/* <Quiz /> */}
     </NavigationContainer>
   );
