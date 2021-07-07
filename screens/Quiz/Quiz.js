@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import QuizQuestion from './components/QuizQuestion';
 import QuizAnswer from './components/QuizAnswer';
 import QuizScore from './components/QuizScore';
-import { Container, StyledSafeAreaView } from '../../styles/shared';
+import { Container } from '../../styles/shared';
 import styled from 'styled-components';
 import { ProgressBar } from './styles/styles';
 
@@ -12,11 +12,11 @@ class Quiz extends Component {
   render() {
     return (
       <Container>
-        <StyledSafeAreaView>
+        <Container>
           {/* <QuizQuestion /> */}
           {/* <QuizAnswer /> */}
           <QuizScore />
-        </StyledSafeAreaView>
+        </Container>
       </Container>
     );
   }

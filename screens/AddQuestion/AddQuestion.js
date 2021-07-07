@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import Title from '../../components/Title';
-import FilledTouchableOpacity from '../../components/FilledTouchableOpacity';
-import { Container, StyledSafeAreaView, StyledTextInput } from '../../styles/shared';
+import StyledButton from '../../components/StyledButton';
+import { Container, StyledTextInput } from '../../styles/shared';
 
 class AddQuestion extends Component {
   render() {
     return (
       <Container>
-        <StyledSafeAreaView>
+        <Container>
           <Title>What would you like to memorize?</Title>
           <View>
             <StyledTextInput
@@ -21,9 +21,9 @@ class AddQuestion extends Component {
               value={() => {}}
               placeholder="Enter the answer"
             />
-            <FilledTouchableOpacity>Submit</FilledTouchableOpacity>
+            <StyledButton>Submit</StyledButton>
           </View>
-        </StyledSafeAreaView>
+        </Container>
       </Container>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import FilledTouchableOpacity from '../../../components/FilledTouchableOpacity';
+import StyledButton from '../../../components/StyledButton';
 import Title from '../../../components/Title';
 import { CenterContainer } from '../../../styles/shared';
 import { CardScore, ProgressBar } from '../styles/styles';
@@ -18,12 +18,12 @@ class QuizScore extends Component {
         </ProgressBar>
 
         <View>
-          <FilledTouchableOpacity>
+          <StyledButton>
             <Text>Restart</Text>
-          </FilledTouchableOpacity>
-          <FilledTouchableOpacity>
+          </StyledButton>
+          <StyledButton>
             <Text>Back to Decks</Text>
-          </FilledTouchableOpacity>
+          </StyledButton>
         </View>
       </CenterContainer>
     );
