@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
-import { Card, QAHeaderView, QAHeader, QAText, QAButtonView } from '../styles/styles';
+import { CardDeck, Container } from '../../../styles/shared';
+import { Card, QAHeaderView, QAHeader, QAText, QAButtonView, ProgressBar } from '../styles/styles';
 
 class QuizQuestion extends Component {
   render() {
@@ -9,7 +10,7 @@ class QuizQuestion extends Component {
         <ProgressBar>
           <Text>1 / 7</Text>
         </ProgressBar>
-        <Card>
+        <CardDeck>
           <QAHeaderView>
             <QAHeader>Question</QAHeader>
           </QAHeaderView>
@@ -17,7 +18,7 @@ class QuizQuestion extends Component {
           <TouchableOpacity>
             <Text>Check Answer</Text>
           </TouchableOpacity>
-        </Card>
+        </CardDeck>
         <QAButtonView>
           <TouchableOpacity>
             <Text>V</Text>

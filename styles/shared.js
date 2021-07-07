@@ -21,6 +21,10 @@ export const DeckContainer = styled(FullWidthContainer)`
   margin-top: 60px;
 `;
 
+export const InputContainer = styled(FullWidthContainer)`
+  margin-top: 40px;
+`;
+
 export const CardDeckContainer = styled.View`
   align-items: center;
   width: 100%;
@@ -33,8 +37,14 @@ export const CardDeckContainer = styled.View`
 
 export const StyledTextInput = styled.TextInput`
   align-items: stretch;
-  height: 40px;
+  border-radius: 8px;
   border-width: 1px;
+  background-color: #e8e8e8;
+  padding: 48px 15px;
+  margin-bottom: 60px;
+  font-family: 'HelveticaNeue-Medium';
+  font-size: 20px;
+  color: #da0037;
 `;
 
 export const MainTitle = styled.Text`
@@ -59,11 +69,10 @@ export const CardDeck = styled.View`
   background-color: #e8e8e8;
   padding: 30px;
   border-radius: 12px;
-  /* height: 450px; */
   align-items: center;
   width: 100%;
-  /* margin: 50px 0 20px; */
   box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.34);
+  margin-bottom: 20px;
 `;
 
 export const DeckHeader = styled.Text`

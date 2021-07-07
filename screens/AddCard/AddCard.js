@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import Title from '../../components/Title';
 import StyledButton from '../../components/StyledButton';
-import { Container, StyledTextInput } from '../../styles/shared';
+import {
+  Container,
+  FullWidthContainer,
+  InputContainer,
+  StyledTextInput,
+} from '../../styles/shared';
 
 class AddCard extends Component {
   render() {
     return (
       <Container>
-        <Container>
+        <FullWidthContainer>
           <Title>What would you like to memorize?</Title>
-          <View>
+          <InputContainer>
             <StyledTextInput
               onChangeText={() => {}}
               value={() => {}}
@@ -22,8 +27,8 @@ class AddCard extends Component {
               placeholder="Enter the answer"
             />
             <StyledButton>Submit</StyledButton>
-          </View>
-        </Container>
+          </InputContainer>
+        </FullWidthContainer>
       </Container>
     );
   }

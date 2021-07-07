@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import Title from '../../components/Title';
 import StyledButton from '../../components/StyledButton';
-import { Container, FullWidthContainer, StyledTextInput } from '../../styles/shared';
+import {
+  Container,
+  FullWidthContainer,
+  InputContainer,
+  StyledTextInput,
+} from '../../styles/shared';
 
 class AddDeck extends Component {
   render() {
@@ -10,7 +15,7 @@ class AddDeck extends Component {
       <Container>
         <FullWidthContainer>
           <Title>What's your new deck's name?</Title>
-          <View>
+          <InputContainer>
             <StyledTextInput
               onChangeText={() => {}}
               value={() => {}}
@@ -18,7 +23,7 @@ class AddDeck extends Component {
               maxLength={30}
             />
             <StyledButton>Submit</StyledButton>
-          </View>
+          </InputContainer>
         </FullWidthContainer>
       </Container>
     );
