@@ -3,7 +3,7 @@ export const ADD_DECK_TITLE = 'ADD_DECK_TITLE';
 export const ADD_CARD_T0_DECK = 'ADD_CARD_T0_DECK';
 
 // Return all of the decks along with their titles, questions, and answers.
-function receiveDecks(decks) {
+export function receiveDecks(decks) {
   return {
     type: RECEIVE_DECKS,
     decks,
@@ -11,7 +11,7 @@ function receiveDecks(decks) {
 }
 
 // Add title to the deck.
-function addDeckTitle(title) {
+export function addDeckTitle(title) {
   return {
     type: ADD_DECK_TITLE,
     title,
@@ -19,7 +19,7 @@ function addDeckTitle(title) {
 }
 
 // Add the card to the list of questions for the deck with the associated title.
-function addCardToDeck(title, card) {
+export function addCardToDeck(title, card) {
   return {
     type: ADD_CARD_T0_DECK,
     title,

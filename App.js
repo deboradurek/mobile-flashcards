@@ -4,13 +4,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import CustomStatusBar from './components/CustomStatusBar';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducer from './reducers';
+import middleware from './middleware';
 import { darkestGray } from './utils/colors';
 import DeckList from './screens/DeckList/DeckList';
 import Deck from './screens/Deck/Deck';
 import AddDeck from './screens/AddDeck/AddDeck';
 import AddCard from './screens/AddCard/AddCard';
 import Quiz from './screens/Quiz/Quiz';
-import QuizQuestion from './screens/Quiz/components/QuizQuestion';
 import QuizAnswer from './screens/Quiz/components/QuizAnswer';
 import QuizScore from './screens/Quiz/components/QuizScore';
 
@@ -103,25 +106,9 @@ function StackNav() {
           title: 'Add Card',
         })}
       />
-      {/* <Stack.Screen
+      <Stack.Screen
         name="Quiz"
         component={Quiz}
-        options={() => ({
-          headerTintColor: '#E8E8E8',
-          headerStyle: {
-            backgroundColor: '#222831',
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-          },
-          headerBackTitleVisible: true,
-          title: 'Quiz',
-        })}
-      /> */}
-      <Stack.Screen
-        name="QuizQuestion"
-        component={QuizQuestion}
         options={() => ({
           headerTintColor: '#E8E8E8',
           headerStyle: {
@@ -171,17 +158,15 @@ function StackNav() {
   );
 }
 
+const store = createStore(reducer, middleware);
+
 export default function App() {
   return (
-    <NavigationContainer theme={MyTheme}>
-      <CustomStatusBar backgroundColor={darkestGray} barStyle="light-content" />
-      <StackNav />
-      {/* <TabNav /> */}
-      {/* <DeckList /> */}
-      {/* <Deck /> */}
-      {/* <AddDeck /> */}
-      {/* <AddCard /> */}
-      {/* <Quiz /> */}
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer theme={MyTheme}>
+        <CustomStatusBar backgroundColor={darkestGray} barStyle="light-content" />
+        <StackNav />
+      </NavigationContainer>
+    </Provider>
   );
 }

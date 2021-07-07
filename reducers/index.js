@@ -1,6 +1,7 @@
+import { combineReducers } from 'redux';
 import { RECEIVE_DECKS, ADD_DECK_TITLE, ADD_CARD_T0_DECK } from '../actions';
 
-export default function decks(state = {}, action) {
+function decks(state = {}, action) {
   switch (action.type) {
     case RECEIVE_DECKS:
       return {
@@ -8,17 +9,18 @@ export default function decks(state = {}, action) {
         ...action.decks,
       };
 
-    case ADD_DECK_TITLE:
+    case ADD_DECK_TITLE: {
       const { title } = action;
       return {
         ...state,
         [title]: {
-          title: [title],
+          title,
           questions: [],
         },
       };
+    }
 
-    case ADD_CARD_T0_DECK:
+    case ADD_CARD_T0_DECK: {
       const { title, card } = action;
       return {
         ...state,
@@ -27,8 +29,11 @@ export default function decks(state = {}, action) {
           questions: [...state[title].questions, card],
         },
       };
+    }
 
     default:
       return state;
   }
 }
+
+export default combineReducers({ decks });
