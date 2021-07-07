@@ -3,7 +3,6 @@ import QuizQuestion from './components/QuizQuestion';
 import QuizAnswer from './components/QuizAnswer';
 import QuizScore from './components/QuizScore';
 import { Container, FullWidthContainer } from '../../styles/shared';
-import { ProgressBar } from './styles/styles';
 
 class Quiz extends Component {
   render() {

@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import styled from 'styled-components';
 
 export const Container = styled.View`
   flex: 1;
@@ -17,23 +16,46 @@ export const FullWidthContainer = styled.View`
   width: 100%;
 `;
 
-export const DeckContainer = styled(FullWidthContainer)`
-  margin-top: 60px;
+export const StyledButtonContainer = styled(FullWidthContainer)`
+  margin-top: 20px;
 `;
 
 export const InputContainer = styled(FullWidthContainer)`
   margin-top: 40px;
 `;
 
-export const CardDeckContainer = styled.View`
+export const SmallCardContainer = styled.View`
+  background-color: #e8e8e8;
+  padding: 15px;
+  border-radius: 12px;
   align-items: center;
   width: 100%;
-  padding: 50px 30px;
+  box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.34);
+  margin-bottom: 20px;
 `;
 
-// export const Container = styled(SafeAreaView)`
-//   width: 100%;
-// `;
+export const LargeCardContainer = styled.View`
+  background-color: #e8e8e8;
+  padding: 15px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.34);
+  margin-bottom: 20px;
+  min-height: 350px;
+  flex: 1;
+`;
+
+export const DeckContainer = styled(LargeCardContainer)`
+  justify-content: center;
+`;
+
+export const TextCardDeck = styled.View`
+  align-items: center;
+  width: 100%;
+  padding: 15px;
+`;
 
 export const StyledTextInput = styled.TextInput`
   align-items: stretch;
@@ -55,26 +77,6 @@ export const MainTitle = styled.Text`
   margin-bottom: 40px;
 `;
 
-export const Card = styled.View`
-  border: 1px solid green;
-  padding: 30px;
-  border-radius: 12px;
-  height: 450px;
-  align-items: center;
-  width: 100%;
-  margin-bottom: 20px;
-`;
-
-export const CardDeck = styled.View`
-  background-color: #e8e8e8;
-  padding: 30px;
-  border-radius: 12px;
-  align-items: center;
-  width: 100%;
-  box-shadow: 0px 0px 3px rgba(255, 255, 255, 0.34);
-  margin-bottom: 20px;
-`;
-
 export const DeckHeader = styled.Text`
   font-family: 'HelveticaNeue-Medium';
   font-size: 28px;
@@ -82,10 +84,14 @@ export const DeckHeader = styled.Text`
   margin-bottom: 20px;
 `;
 
-export const ThinText = styled.Text`
+export const DarkThinText = styled.Text`
   font-family: 'HelveticaNeue-Thin';
   font-size: 16px;
   color: #222831;
+`;
+
+export const TextTouchableOpacity = styled.TouchableOpacity`
+  padding: 15px;
 `;
 
 export const FilledTouchableOpacity = styled.TouchableOpacity`

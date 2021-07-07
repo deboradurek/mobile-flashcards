@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
 import Title from '../../components/Title';
 import StyledButton from '../../components/StyledButton';
 import {

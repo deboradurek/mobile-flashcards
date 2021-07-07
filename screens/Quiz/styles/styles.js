@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 
-export const ProgressBar = styled.View`
-  border: 1px solid green;
-  border-radius: 15px;
+export const StyledProgressBar = styled.View`
+  background-color: rgba(232, 232, 232, 0.2);
+  border-radius: 12px;
   align-items: center;
   width: 100%;
-  padding: 8px 5px;
+  padding: 8px;
+  margin-bottom: 20px;
 `;
 
 export const CardScore = styled.View`
@@ -18,12 +19,13 @@ export const CardScore = styled.View`
   margin-bottom: 20px;
 `;
 
-export const QAHeaderView = styled.View`
+export const QAHeaderContainer = styled.View`
   border-bottom-width: 1px;
-  border-bottom-color: #999;
-  width: 100%;
+  border-bottom-color: #da0037;
+  width: 90%;
   align-items: center;
   padding-bottom: 15px;
+  background-color: #e8e8e8;
 `;
 
 export const QAHeader = styled.Text`
@@ -32,11 +34,26 @@ export const QAHeader = styled.Text`
 `;
 
 export const QAText = styled.Text`
+  font-family: 'HelveticaNeue-Medium';
   font-size: 30px;
   text-align: center;
 `;
 
-export const QAButtonView = styled.View`
+export const QAButtonContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const TouchableOpacityGreen = styled.TouchableOpacity`
+  padding: 20px 70px;
+  margin: 40px 0;
+  background-color: #209f21;
+  border-radius: 12px;
+`;
+
+export const TouchableOpacityRed = styled.TouchableOpacity`
+  padding: 20px 70px;
+  margin: 40px 0;
+  background-color: #e82222;
+  border-radius: 12px;
 `;

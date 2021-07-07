@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import CustomStatusBar from './components/CustomStatusBar';
@@ -10,8 +9,10 @@ import DeckList from './screens/DeckList/DeckList';
 import Deck from './screens/Deck/Deck';
 import AddDeck from './screens/AddDeck/AddDeck';
 import AddCard from './screens/AddCard/AddCard';
-import QuizQuestion from './screens/Quiz/components/QuizQuestion';
 import Quiz from './screens/Quiz/Quiz';
+import QuizQuestion from './screens/Quiz/components/QuizQuestion';
+import QuizAnswer from './screens/Quiz/components/QuizAnswer';
+import QuizScore from './screens/Quiz/components/QuizScore';
 
 const MyTheme = {
   ...DefaultTheme,
@@ -102,7 +103,7 @@ function StackNav() {
           title: 'Add Card',
         })}
       />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Quiz"
         component={Quiz}
         options={() => ({
@@ -116,6 +117,54 @@ function StackNav() {
           },
           headerBackTitleVisible: true,
           title: 'Quiz',
+        })}
+      /> */}
+      <Stack.Screen
+        name="QuizQuestion"
+        component={QuizQuestion}
+        options={() => ({
+          headerTintColor: '#E8E8E8',
+          headerStyle: {
+            backgroundColor: '#222831',
+            shadowOffset: {
+              width: 0,
+              height: 0,
+            },
+          },
+          headerBackTitleVisible: true,
+          title: 'Quiz',
+        })}
+      />
+      <Stack.Screen
+        name="QuizAnswer"
+        component={QuizAnswer}
+        options={() => ({
+          headerTintColor: '#E8E8E8',
+          headerStyle: {
+            backgroundColor: '#222831',
+            shadowOffset: {
+              width: 0,
+              height: 0,
+            },
+          },
+          headerBackTitleVisible: false,
+          title: 'Answer',
+        })}
+      />
+      <Stack.Screen
+        name="QuizScore"
+        component={QuizScore}
+        options={() => ({
+          headerTintColor: '#E8E8E8',
+          headerStyle: {
+            backgroundColor: '#222831',
+            shadowOffset: {
+              width: 0,
+              height: 0,
+            },
+          },
+          headerBackTitleVisible: false,
+          title: 'Score',
         })}
       />
     </Stack.Navigator>
