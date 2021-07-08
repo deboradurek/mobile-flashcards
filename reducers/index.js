@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { RECEIVE_DECKS, ADD_DECK_TITLE, ADD_CARD_T0_DECK } from '../actions';
+import { RECEIVE_DECKS, SAVE_NEW_DECK, ADD_CARD_T0_DECK } from '../actions';
 
 function decks(state = {}, action) {
   switch (action.type) {
@@ -9,7 +9,7 @@ function decks(state = {}, action) {
         ...action.decks,
       };
 
-    case ADD_DECK_TITLE: {
+    case SAVE_NEW_DECK: {
       const { title } = action;
       return {
         ...state,

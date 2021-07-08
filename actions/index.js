@@ -1,7 +1,7 @@
-import { fetchAllDecks } from '../utils/storageAPI';
+import { fetchAllDecks, saveNewDeckTitle } from '../utils/storageAPI';
 
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
-export const ADD_DECK_TITLE = 'ADD_DECK_TITLE';
+export const SAVE_NEW_DECK = 'SAVE_NEW_DECK';
 export const ADD_CARD_T0_DECK = 'ADD_CARD_T0_DECK';
 
 // Return all of the decks along with their titles, questions, and answers.
@@ -18,11 +18,17 @@ export function getDecks() {
   };
 }
 
-// Add title to the deck.
-export function addDeckTitle(title) {
+// Add a new deck name to the list of decks.
+function saveNewDeck(title) {
   return {
-    type: ADD_DECK_TITLE,
+    type: SAVE_NEW_DECK,
     title,
+  };
+}
+
+export function addNewDeck(title) {
+  return (dispatch) => {
+    return saveNewDeckTitle(title).then(() => dispatch(saveNewDeck(title)));
   };
 }
 
