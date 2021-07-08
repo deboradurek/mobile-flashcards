@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { addNewDeck } from '../../actions';
 import Title from '../../components/Title';
 import { FilledButton } from '../../components/StyledButtons';
 import {
@@ -21,6 +23,21 @@ class AddDeck extends Component {
     });
   };
 
+  handleCreateDeck = () => {
+    const { dispatch } = this.props;
+    const { deckName } = this.state;
+
+    console.log(deckName);
+
+    dispatch(addNewDeck(deckName));
+
+    this.setState({
+      deckName: '',
+    });
+
+    // TODO: Go to DecksList
+  };
+
   render() {
     const { deckName } = this.state;
 
@@ -35,7 +52,9 @@ class AddDeck extends Component {
               placeholder="Enter deck's name"
               maxLength={30}
             />
-            <FilledButton>Create Deck</FilledButton>
+            <FilledButton onPress={this.handleCreateDeck} disabled={deckName === ''}>
+              Create Deck
+            </FilledButton>
           </InputContainer>
         </FullWidthContainer>
       </Container>
@@ -43,4 +62,4 @@ class AddDeck extends Component {
   }
 }
 
-export default AddDeck;
+export default connect()(AddDeck);
