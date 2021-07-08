@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { DeckHeader, TextCardDeck, DarkThinText } from '../styles/shared';
 
-class DeckCard extends Component {
-  render() {
-    return (
-      <TextCardDeck>
-        <DeckHeader>Geography</DeckHeader>
-        <DarkThinText>10 cards</DarkThinText>
-      </TextCardDeck>
-    );
-  }
+function DeckCard(props) {
+  const { title, numCards } = props;
+
+  return (
+    <TextCardDeck>
+      <DeckHeader>{title}</DeckHeader>
+      <DarkThinText>{numCards} cards</DarkThinText>
+    </TextCardDeck>
+  );
 }
 
 export default DeckCard;
