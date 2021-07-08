@@ -1,12 +1,20 @@
+import { fetchAllDecks } from '../utils/storageAPI';
+
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 export const ADD_DECK_TITLE = 'ADD_DECK_TITLE';
 export const ADD_CARD_T0_DECK = 'ADD_CARD_T0_DECK';
 
 // Return all of the decks along with their titles, questions, and answers.
-export function receiveDecks(decks) {
+function receiveDecks(decks) {
   return {
     type: RECEIVE_DECKS,
     decks,
+  };
+}
+
+export function getDecks() {
+  return (dispatch) => {
+    return fetchAllDecks().then((decks) => dispatch(receiveDecks(decks)));
   };
 }
 
