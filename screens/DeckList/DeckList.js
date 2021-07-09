@@ -26,7 +26,7 @@ class DeckList extends Component {
           <Title>Your Decks</Title>
           {decks.map((deck) => (
             <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Deck')}
+              onPress={() => this.props.navigation.navigate('Deck', { title: deck.title })}
               key={deck.title}
             >
               <SmallCardContainer>
