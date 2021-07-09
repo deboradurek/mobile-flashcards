@@ -13,7 +13,7 @@ class Deck extends Component {
           <DeckCard title={title} numCards={numCards} />
         </DeckContainer>
         <LargeButtonContainer>
-          <OutlinedButton onPress={() => this.props.navigation.navigate('AddCard')}>
+          <OutlinedButton onPress={() => this.props.navigation.navigate('AddCard', { title })}>
             Add Card
           </OutlinedButton>
           <FilledButton onPress={() => this.props.navigation.navigate('Quiz')}>

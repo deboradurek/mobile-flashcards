@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Title from '../../components/Title';
 import { FilledButton } from '../../components/StyledButtons';
 import {
@@ -9,20 +10,35 @@ import {
 } from '../../styles/shared';
 
 class AddCard extends Component {
+  state = {
+    questionInput: '',
+    answerInput: '',
+  };
+
+  handleChange = (field) => (e) => {
+    const userInput = e.nativeEvent.text;
+
+    this.setState({
+      [field]: userInput,
+    });
+  };
+
   render() {
+    const { questionInput, answerInput } = this.state;
+
     return (
       <Container>
         <FullWidthContainer>
-          <Title>What would you like to memorize?</Title>
+          <Title>What would you like to learn?</Title>
           <InputContainer>
             <StyledTextInput
-              onChangeText={() => {}}
-              value={() => {}}
+              onChange={this.handleChange('questionInput')}
+              value={questionInput}
               placeholder="Enter the question"
             />
             <StyledTextInput
-              onChangeText={() => {}}
-              value={() => {}}
+              onChange={this.handleChange('answerInput')}
+              value={answerInput}
               placeholder="Enter the answer"
             />
             <FilledButton>Submit</FilledButton>
@@ -33,4 +49,13 @@ class AddCard extends Component {
   }
 }
 
-export default AddCard;
+function mapStateToProps({ decks }, props) {
+  const { title } = props.route.params;
+
+  return {
+    card: decks[title].questions,
+    title,
+  };
+}
+
+export default connect(mapStateToProps)(AddCard);
