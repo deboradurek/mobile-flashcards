@@ -8,6 +8,7 @@ import {
   InputContainer,
   StyledTextInput,
 } from '../../styles/shared';
+import { addCardToDeck } from '../../actions';
 
 class AddCard extends Component {
   state = {
@@ -20,6 +21,20 @@ class AddCard extends Component {
 
     this.setState({
       [field]: userInput,
+    });
+  };
+
+  handleSubmit = () => {
+    const { questionInput, answerInput } = this.state;
+    const { dispatch, title } = this.props;
+
+    dispatch(addCardToDeck(title, { question: questionInput, answer: answerInput })).then(() =>
+      this.props.navigation.navigate('Deck')
+    );
+
+    this.setState({
+      questionInput: '',
+      answerInput: '',
     });
   };
 
@@ -41,7 +56,12 @@ class AddCard extends Component {
               value={answerInput}
               placeholder="Enter the answer"
             />
-            <FilledButton>Submit</FilledButton>
+            <FilledButton
+              onPress={this.handleSubmit}
+              disabled={questionInput === '' || answerInput === ''}
+            >
+              Submit
+            </FilledButton>
           </InputContainer>
         </FullWidthContainer>
       </Container>
@@ -49,11 +69,10 @@ class AddCard extends Component {
   }
 }
 
-function mapStateToProps({ decks }, props) {
+function mapStateToProps({}, props) {
   const { title } = props.route.params;
 
   return {
-    card: decks[title].questions,
     title,
   };
 }

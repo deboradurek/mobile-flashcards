@@ -1,4 +1,4 @@
-import { fetchAllDecks, saveNewDeckTitle } from '../utils/storageAPI';
+import { fetchAllDecks, saveNewDeckTitle, saveCardToDeck } from '../utils/storageAPI';
 
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 export const SAVE_NEW_DECK = 'SAVE_NEW_DECK';
@@ -33,10 +33,16 @@ export function addNewDeck(title) {
 }
 
 // Add the card to the list of questions for the deck with the associated title.
-export function addCardToDeck(title, card) {
+function addNewCardToDeck(title, card) {
   return {
     type: ADD_CARD_T0_DECK,
     title,
     card,
+  };
+}
+
+export function addCardToDeck(title, card) {
+  return (dispatch) => {
+    return saveCardToDeck(title, card).then(() => dispatch(addNewCardToDeck(title, card)));
   };
 }

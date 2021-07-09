@@ -33,4 +33,20 @@ export async function saveNewDeckTitle(title) {
 }
 
 // Add the card to the list of questions for the deck with the associated title
-export function addCardToDeck(title, card) {}
+export async function saveCardToDeck(title, card) {
+  try {
+    const data = await AsyncStorage.getItem(DECKS_STORAGE_KEY);
+    const parsedData = JSON.parse(data);
+
+    await AsyncStorage.mergeItem(
+      DECKS_STORAGE_KEY,
+      JSON.stringify({
+        [title]: {
+          questions: [...parsedData[title].questions, card],
+        },
+      })
+    );
+  } catch (e) {
+    console.log('Error saveCardToDeck: ', e);
+  }
+}
