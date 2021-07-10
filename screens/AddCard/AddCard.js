@@ -28,14 +28,21 @@ class AddCard extends Component {
     const { questionInput, answerInput } = this.state;
     const { dispatch, title } = this.props;
 
-    dispatch(addCardToDeck(title, { question: questionInput, answer: answerInput })).then(() =>
-      this.props.navigation.navigate('Deck')
+    dispatch(addCardToDeck(title, { question: questionInput, answer: `${answerInput}!` })).then(
+      () => this.props.navigation.navigate('Deck')
     );
 
     this.setState({
       questionInput: '',
       answerInput: '',
     });
+  };
+
+  disableBtn = () => {
+    const { questionInput, answerInput } = this.state;
+    return (
+      questionInput === '' || answerInput === '' || (answerInput !== 'Yes' && answerInput !== 'No')
+    );
   };
 
   render() {
@@ -54,12 +61,9 @@ class AddCard extends Component {
             <StyledTextInput
               onChange={this.handleChange('answerInput')}
               value={answerInput}
-              placeholder="Enter the answer"
+              placeholder="Enter Yes or No"
             />
-            <FilledButton
-              onPress={this.handleSubmit}
-              disabled={questionInput === '' || answerInput === ''}
-            >
+            <FilledButton onPress={this.handleSubmit} disabled={this.disableBtn()}>
               Submit
             </FilledButton>
           </InputContainer>
