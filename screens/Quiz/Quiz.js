@@ -15,6 +15,15 @@ class Quiz extends Component {
 
   handleAnswer = (answer) => () => {
     const { indexCard, numCorrect } = this.state;
+    const { deckQuestions } = this.props;
+
+    const correctAnswer = deckQuestions[indexCard].answer;
+
+    if (answer === correctAnswer) {
+      this.setState((currentState) => ({
+        numCorrect: currentState.numCorrect + 1,
+      }));
+    }
 
     this.setState((currentState) => ({
       indexCard: currentState.indexCard + 1,
@@ -24,8 +33,6 @@ class Quiz extends Component {
   render() {
     const { title, numCards, deckQuestions } = this.props;
     const { indexCard, numCorrect } = this.state;
-
-    console.log(deckQuestions[indexCard]);
 
     return (
       <Container>
@@ -43,8 +50,8 @@ class Quiz extends Component {
             </TextButton>
           </LargeCardContainer>
           <QAButtonContainer>
-            <QuizButtonGreen onPress={this.handleAnswer('true')}>V</QuizButtonGreen>
-            <QuizButtonRed onPress={this.handleAnswer('false')}>X</QuizButtonRed>
+            <QuizButtonGreen onPress={this.handleAnswer('Yes!')}>V</QuizButtonGreen>
+            <QuizButtonRed onPress={this.handleAnswer('No!')}>X</QuizButtonRed>
           </QAButtonContainer>
         </FullWidthContainer>
       </Container>
