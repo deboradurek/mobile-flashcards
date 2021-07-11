@@ -14,7 +14,7 @@ class Quiz extends Component {
   };
 
   handleAnswer = (answer) => () => {
-    const { indexCard, numCorrect } = this.state;
+    const { indexCard } = this.state;
     const { deckQuestions } = this.props;
 
     const correctAnswer = deckQuestions[indexCard].answer;
@@ -45,7 +45,9 @@ class Quiz extends Component {
             <View>
               <QAText>{deckQuestions[indexCard].question}</QAText>
             </View>
-            <TextButton onPress={() => this.props.navigation.navigate('QuizAnswer')}>
+            <TextButton
+              onPress={() => this.props.navigation.navigate('QuizAnswer', { title, indexCard })}
+            >
               Show Answer
             </TextButton>
           </LargeCardContainer>
