@@ -2,10 +2,14 @@ import React from 'react';
 import { LightText } from '../../../styles/shared';
 import { StyledProgressBar } from '../styles/styles';
 
-function ProgressBar() {
+function ProgressBar(props) {
+  const { answeredCards, totalCards } = props;
+
   return (
     <StyledProgressBar>
-      <LightText>1 / 7</LightText>
+      <LightText>
+        {answeredCards} / {totalCards}
+      </LightText>
     </StyledProgressBar>
   );
 }

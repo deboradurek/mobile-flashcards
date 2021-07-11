@@ -32,12 +32,14 @@ class Quiz extends Component {
 
   render() {
     const { title, numCards, deckQuestions } = this.props;
-    const { indexCard, numCorrect } = this.state;
+    const { indexCard } = this.state;
+
+    const answeredCards = indexCard + 1;
 
     return (
       <Container>
         <FullWidthContainer>
-          <ProgressBar />
+          <ProgressBar answeredCards={answeredCards} totalCards={numCards} />
           <LargeCardContainer>
             <QAHeaderContainer>
               <QAHeader>Question</QAHeader>
