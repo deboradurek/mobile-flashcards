@@ -27,13 +27,14 @@ class AddDeck extends Component {
     const { dispatch } = this.props;
     const { deckName } = this.state;
 
-    dispatch(addNewDeck(deckName)).then(() =>
-      this.props.navigation.navigate('Deck', { title: deckName })
-    );
+    dispatch(addNewDeck(deckName));
 
     this.setState({
       deckName: '',
     });
+
+    // Navigate to DeckList
+    this.props.navigation.navigate('DeckList');
   };
 
   render() {
