@@ -14,7 +14,6 @@ import Deck from './screens/Deck/Deck';
 import AddDeck from './screens/AddDeck/AddDeck';
 import AddCard from './screens/AddCard/AddCard';
 import Quiz from './screens/Quiz/Quiz';
-import QuizAnswer from './screens/Quiz/components/QuizAnswer';
 import QuizScore from './screens/Quiz/components/QuizScore';
 
 const MyTheme = {
@@ -73,7 +72,7 @@ function StackNav() {
       <Stack.Screen
         name="DeckList"
         component={TabNav}
-        options={{ headerShown: false, title: 'Deck List' }}
+        options={{ headerShown: false, title: '' }}
       />
       <Stack.Screen
         name="Deck"
@@ -120,38 +119,6 @@ function StackNav() {
           },
           headerBackTitleVisible: true,
           title: 'Quiz',
-        })}
-      />
-      <Stack.Screen
-        name="QuizAnswer"
-        component={QuizAnswer}
-        options={() => ({
-          headerTintColor: '#E8E8E8',
-          headerStyle: {
-            backgroundColor: '#222831',
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-          },
-          headerBackTitleVisible: false,
-          title: 'Answer',
-        })}
-      />
-      <Stack.Screen
-        name="QuizScore"
-        component={QuizScore}
-        options={() => ({
-          headerTintColor: '#E8E8E8',
-          headerStyle: {
-            backgroundColor: '#222831',
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-          },
-          headerBackTitleVisible: false,
-          title: 'Score',
         })}
       />
     </Stack.Navigator>

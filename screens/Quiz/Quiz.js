@@ -64,12 +64,12 @@ class Quiz extends Component {
     );
   };
 
-  handleAnswer = (answer) => () => {
+  handleAnswer = (userAnswer) => () => {
     const { indexCard } = this.state;
     const { deckQuestions } = this.props;
-    const correctAnswer = deckQuestions[indexCard].answer;
+    const answer = deckQuestions[indexCard].userAnswer;
 
-    if (answer === correctAnswer) {
+    if (userAnswer === answer) {
       this.setState((currentState) => ({
         numCorrect: currentState.numCorrect + 1,
       }));
@@ -84,7 +84,8 @@ class Quiz extends Component {
     const { indexCard } = this.state;
     const answeredCards = indexCard + 1;
 
-    // const { frontComponent, backComponent } = this.props;
+    const question = deckQuestions[indexCard].question;
+    const answer = deckQuestions[indexCard].answer;
 
     const flipSideTwo = {
       transform: [
@@ -113,8 +114,20 @@ class Quiz extends Component {
         <FullWidthContainer>
           <ProgressBar answeredCards={answeredCards} totalCards={numCards} />
           <FullWidthContainer>
-            <FlipCard handlePress={this.handleFlip} animation={flipSideTwo} />
-            <FlipCard handlePress={this.handleFlip} animation={flipSideOne} />
+            <FlipCard
+              header={'Question'}
+              text={question}
+              buttonText={'Show answer'}
+              handlePress={this.handleFlip}
+              animation={flipSideTwo}
+            />
+            <FlipCard
+              header={'Answer'}
+              text={answer}
+              buttonText={'Back to Question'}
+              handlePress={this.handleFlip}
+              animation={flipSideOne}
+            />
           </FullWidthContainer>
           <QAButtonContainer>
             <QuizButtonGreen onPress={this.handleAnswer('Yes!')}>V</QuizButtonGreen>

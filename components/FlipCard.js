@@ -3,17 +3,17 @@ import { Animated, StyleSheet, View } from 'react-native';
 import { QAHeader, QAHeaderContainer, QAText } from '../screens/Quiz/styles/styles';
 import TextButton from './TextButton';
 
-function FlipCard({ frontComponent, backComponent, handlePress, animation }) {
+function FlipCard({ header, text, buttonText, handlePress, animation }) {
   return (
     <Animated.View style={[styles.flipContainer, animation, { width: '100%', height: '100%' }]}>
       <QAHeaderContainer>
-        <QAHeader>Question</QAHeader>
+        <QAHeader>{header}</QAHeader>
       </QAHeaderContainer>
       <View>
-        <QAText>ENTIRE QUESTION</QAText>
+        <QAText>{text}</QAText>
       </View>
       <TextButton activeOpacity={0} onPress={handlePress}>
-        Show Answer
+        {buttonText}
       </TextButton>
     </Animated.View>
   );
