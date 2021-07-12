@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Animated, View } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -36,14 +37,19 @@ export const SmallCardContainer = styled.View`
 
 export const LargeCardContainer = styled.View`
   background-color: #e8e8e8;
-  padding: 15px;
   border-radius: 12px;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.34);
-  margin-bottom: 20px;
   min-height: 350px;
+  flex: 1;
+`;
+
+export const LargeInnerCardContainer = styled(LargeCardContainer)`
+  justify-content: space-between;
+  padding: 15px 30px;
+  margin-bottom: 20px;
+  width: 100%;
   flex: 1;
 `;
 
@@ -106,6 +112,10 @@ export const FilledTouchableOpacity = styled.TouchableOpacity`
 export const OutlinedTouchableOpacity = styled(FilledTouchableOpacity)`
   background-color: #393e46;
   border: 2px solid #f96d00;
+`;
+
+export const FlexOneTouchableOpacity = styled.TouchableOpacity`
+  flex: 1;
 `;
 
 export const LightText = styled.Text`

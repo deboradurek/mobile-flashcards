@@ -22,10 +22,9 @@ export const CardScore = styled.View`
 export const QAHeaderContainer = styled.View`
   border-bottom-width: 1px;
   border-bottom-color: #da0037;
-  width: 90%;
+  width: 100%;
   align-items: center;
   padding-bottom: 15px;
-  background-color: #e8e8e8;
 `;
 
 export const QAHeader = styled.Text`
