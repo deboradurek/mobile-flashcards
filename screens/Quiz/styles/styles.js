@@ -10,13 +10,15 @@ export const StyledProgressBar = styled.View`
 `;
 
 export const CardScore = styled.View`
-  border: 1px solid green;
-  padding: 30px;
+  background-color: #e8e8e8;
+  padding: 15px;
+  margin: 25px 0;
   border-radius: 12px;
-  height: 210px;
+  box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.34);
+  height: 250px;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  margin-bottom: 20px;
 `;
 
 export const QAHeaderContainer = styled.View`
@@ -38,9 +40,19 @@ export const QAText = styled.Text`
   text-align: center;
 `;
 
+export const TextScore = styled.Text`
+  font-family: 'HelveticaNeue-Bold';
+  font-size: 90px;
+  color: #da0037;
+`;
+
 export const QAButtonContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
+`;
+
+export const ScoreButtonContainer = styled.View`
+  margin-top: 50px;
 `;
 
 export const TouchableOpacityGreen = styled.TouchableOpacity`
