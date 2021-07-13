@@ -3,9 +3,9 @@ import { Animated, Easing } from 'react-native';
 import { connect } from 'react-redux';
 import ProgressBar from './components/ProgressBar';
 import FlipCard from '../../components/FlipCard';
-import { QuizButtonGreen, QuizButtonRed } from '../../components/StyledButtons';
+import { QuizButtonGreen, QuizButtonRed, QuizButtonEmpty } from '../../components/StyledButtons';
 import { Container, FullWidthContainer } from '../../styles/shared';
-import { QAButtonContainer } from './styles/styles';
+import { QAButtonContainer, TouchableOpacityEmpty } from './styles/styles';
 
 class Quiz extends Component {
   state = {
@@ -19,7 +19,7 @@ class Quiz extends Component {
 
   shouldComponentUpdate(__, nextState) {
     if (nextState.flip === this.state.flip) {
-      return false;
+      return true;
     }
 
     if (nextState.flip === true) {
@@ -67,13 +67,14 @@ class Quiz extends Component {
   handleAnswer = (userAnswer) => () => {
     const { indexCard } = this.state;
     const { deckQuestions } = this.props;
-    const answer = deckQuestions[indexCard].userAnswer;
+    const answer = deckQuestions[indexCard].answer;
 
     if (userAnswer === answer) {
       this.setState((currentState) => ({
         numCorrect: currentState.numCorrect + 1,
       }));
     }
+
     this.setState((currentState) => ({
       indexCard: currentState.indexCard + 1,
     }));
@@ -81,7 +82,7 @@ class Quiz extends Component {
 
   render() {
     const { numCards, deckQuestions } = this.props;
-    const { indexCard } = this.state;
+    const { indexCard, flip } = this.state;
     const answeredCards = indexCard + 1;
 
     const question = deckQuestions[indexCard].question;
@@ -129,10 +130,12 @@ class Quiz extends Component {
               animation={flipSideOne}
             />
           </FullWidthContainer>
-          <QAButtonContainer>
-            <QuizButtonGreen onPress={this.handleAnswer('Yes!')}>V</QuizButtonGreen>
-            <QuizButtonRed onPress={this.handleAnswer('No!')}>X</QuizButtonRed>
-          </QAButtonContainer>
+          {flip === true && (
+            <QAButtonContainer>
+              <QuizButtonGreen onPress={this.handleAnswer('Yes!')}>V</QuizButtonGreen>
+              <QuizButtonRed onPress={this.handleAnswer('No!')}>X</QuizButtonRed>
+            </QAButtonContainer>
+          )}
         </FullWidthContainer>
       </Container>
     );
