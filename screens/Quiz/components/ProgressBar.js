@@ -3,13 +3,11 @@ import { LightText } from '../../../styles/shared';
 import { StyledProgressBar } from '../styles/styles';
 
 function ProgressBar(props) {
-  const { answeredCards, totalCards } = props;
+  const { message } = props;
 
   return (
     <StyledProgressBar>
-      <LightText>
-        {answeredCards} / {totalCards}
-      </LightText>
+      <LightText>{message}</LightText>
     </StyledProgressBar>
   );
 }
