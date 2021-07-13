@@ -121,6 +121,22 @@ function StackNav() {
           title: 'Quiz',
         })}
       />
+      <Stack.Screen
+        name="QuizScore"
+        component={QuizScore}
+        options={() => ({
+          headerTintColor: '#E8E8E8',
+          headerStyle: {
+            backgroundColor: '#222831',
+            shadowOffset: {
+              width: 0,
+              height: 0,
+            },
+          },
+          headerBackTitleVisible: false,
+          title: 'Score',
+        })}
+      />
     </Stack.Navigator>
   );
 }
