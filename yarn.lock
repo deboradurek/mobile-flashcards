@@ -2031,12 +2031,12 @@
     expo-modules-autolinking "^0.0.2"
     invariant "^2.2.4"
 
-"@unimodules/react-native-adapter@~6.3.2":
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/@unimodules/react-native-adapter/-/react-native-adapter-6.3.2.tgz#6dd549704d3fc7c729d657beff998f27a34f62a2"
-  integrity sha512-jHrlGfIfs2GiPoDS6HttS5VZ4UmRSGiH1wArAJo7msAe0EACt6b9AR+CuxUPpK0d+DXv31iJzJxh9PYBzyA9Ag==
+"@unimodules/react-native-adapter@~6.3.4":
+  version "6.3.4"
+  resolved "https://registry.yarnpkg.com/@unimodules/react-native-adapter/-/react-native-adapter-6.3.4.tgz#b21e1750b9f2d6e3031dafba890c97586e428f4b"
+  integrity sha512-o2sX+QrYo2hmK0vNbxlULy319IxjgTWVraGxatrXeYPCbFEDM/u+nCLlCgGTz6ZrYN7dHnA0Xq3uoerhUPE0gg==
   dependencies:
-    expo-modules-autolinking "^0.0.2"
+    expo-modules-autolinking "^0.0.3"
     invariant "^2.2.4"
 
 abort-controller@^3.0.0:
@@ -3243,6 +3243,17 @@ expo-modules-autolinking@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/expo-modules-autolinking/-/expo-modules-autolinking-0.0.2.tgz#6015c4e0ba995144145ad29fb2a4b34deba73955"
   integrity sha512-+tEosOIwQ1MlLbHoWNq9fu5C5itSbmrwzIX3KOoBCgEsHlE/xFJ1NoZCWIxCJ0K49Z4Gzab1wCpT0PhdidImnA==
+  dependencies:
+    chalk "^4.1.0"
+    commander "^7.2.0"
+    fast-glob "^3.2.5"
+    find-up "~5.0.0"
+    fs-extra "^9.1.0"
+
+expo-modules-autolinking@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/expo-modules-autolinking/-/expo-modules-autolinking-0.0.3.tgz#45ba8cb1798f9339347ae35e96e9cc70eafb3727"
+  integrity sha512-azkCRYj/DxbK4udDuDxA9beYzQTwpJ5a9QA0bBgha2jHtWdFGF4ZZWSY+zNA5mtU3KqzYt8jWHfoqgSvKyu1Aw==
   dependencies:
     chalk "^4.1.0"
     commander "^7.2.0"
@@ -5468,13 +5479,13 @@ react-native-screens@~3.4.0:
   dependencies:
     warn-once "^0.1.0"
 
-react-native-unimodules@~0.14.4:
-  version "0.14.4"
-  resolved "https://registry.yarnpkg.com/react-native-unimodules/-/react-native-unimodules-0.14.4.tgz#44d4b74786b6651dc3af881d4f5c6e2f4cf83395"
-  integrity sha512-fGen/xcQgAuKTOUiJY7XqslYyXFX9wzon/KLUttfKX3d/zxawCBtpI7v5whBBiu0P4xxLm8aYeKF5gHM5qGujQ==
+react-native-unimodules@~0.14.5:
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/react-native-unimodules/-/react-native-unimodules-0.14.5.tgz#5dcc7ba00ec018caf5d93225c30132b8222e55e1"
+  integrity sha512-AfgbkFUHIkpCytxd2UsNbE0cAmzKpgiQ+ma5iGlzK7fZelMJIv7XEuqFfKT4CZhYgetg5ZHf+ZNr140B/N1RgA==
   dependencies:
     "@unimodules/core" "~7.1.1"
-    "@unimodules/react-native-adapter" "~6.3.2"
+    "@unimodules/react-native-adapter" "~6.3.4"
     chalk "^2.4.2"
     expo-asset "~8.3.2"
     expo-constants "~11.0.1"
