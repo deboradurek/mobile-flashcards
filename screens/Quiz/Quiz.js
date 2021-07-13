@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Animated, Easing } from 'react-native';
 import { connect } from 'react-redux';
 import ProgressBar from './components/ProgressBar';
 import FlipCard from '../../components/FlipCard';
-import { QuizButtonGreen, QuizButtonRed, QuizButtonEmpty } from '../../components/StyledButtons';
+import { QuizButtonGreen, QuizButtonRed } from '../../components/StyledButtons';
 import { Container, FullWidthContainer } from '../../styles/shared';
-import { QAButtonContainer, TouchableOpacityEmpty } from './styles/styles';
+import { QAButtonContainer } from './styles/styles';
 
 class Quiz extends Component {
   state = {
@@ -15,25 +14,45 @@ class Quiz extends Component {
   };
 
   handleAnswer = (userAnswer) => () => {
-    const { indexCard } = this.state;
-    const { deckQuestions } = this.props;
+    const { indexCard, numCorrect } = this.state;
+    const { deckQuestions, numCards } = this.props;
     const answer = deckQuestions[indexCard].answer;
+    const indexPlusOne = indexCard + 1;
+    let nextNumCorrect = numCorrect;
 
+    // Save quantity of correct answers
     if (userAnswer === answer) {
-      this.setState((currentState) => ({
-        numCorrect: currentState.numCorrect + 1,
-      }));
+      nextNumCorrect++;
+      this.setState({
+        numCorrect: nextNumCorrect,
+      });
     }
 
-    this.setState((currentState) => ({
-      indexCard: currentState.indexCard + 1,
-    }));
+    // Go to next card OR go to score page
+    if (indexPlusOne < numCards) {
+      this.setState((currentState) => ({
+        indexCard: currentState.indexCard + 1,
+      }));
+    } else {
+      this.props.navigation.navigate('QuizScore', {
+        numCorrect: nextNumCorrect,
+        numCards,
+      });
+      this.reset();
+    }
   };
 
   onFlip = () => {
     this.setState((currentState) => ({
       flip: !currentState.flip,
     }));
+  };
+
+  reset = () => {
+    this.setState({
+      indexCard: 0,
+      numCorrect: 0,
+    });
   };
 
   render() {
@@ -44,10 +63,12 @@ class Quiz extends Component {
     const question = deckQuestions[indexCard].question;
     const answer = deckQuestions[indexCard].answer;
 
+    const message = `${answeredCards} / ${numCards}`;
+
     return (
       <Container>
         <FullWidthContainer>
-          <ProgressBar answeredCards={answeredCards} totalCards={numCards} />
+          <ProgressBar message={message} />
           <FullWidthContainer>
             <FlipCard
               frontSide={{
