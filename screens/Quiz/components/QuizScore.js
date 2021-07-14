@@ -4,8 +4,13 @@ import ProgressBar from './ProgressBar';
 import { FilledButton, OutlinedButton } from '../../../components/StyledButtons';
 import { Container, FullWidthContainer } from '../../../styles/shared';
 import { CardScore, ScoreButtonContainer, TextScore } from '../styles/styles';
+import { clearAllNotifications, setNotification } from '../../../utils/helpers';
 
 class QuizScore extends Component {
+  componentDidMount() {
+    clearAllNotifications().then(setNotification);
+  }
+
   render() {
     const { numCards, numCorrect } = this.props.route.params;
     const score = (numCorrect / numCards) * 100;

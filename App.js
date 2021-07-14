@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -15,6 +15,8 @@ import AddDeck from './screens/AddDeck/AddDeck';
 import AddCard from './screens/AddCard/AddCard';
 import Quiz from './screens/Quiz/Quiz';
 import QuizScore from './screens/Quiz/components/QuizScore';
+import { setNotification } from './utils/helpers';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const MyTheme = {
   ...DefaultTheme,
@@ -143,13 +145,23 @@ function StackNav() {
 
 const store = createStore(reducer, middleware);
 
-export default function App() {
-  return (
-    <Provider store={store}>
-      <NavigationContainer theme={MyTheme}>
-        <CustomStatusBar backgroundColor={darkestGray} barStyle="light-content" />
-        <StackNav />
-      </NavigationContainer>
-    </Provider>
-  );
+class App extends Component {
+  componentDidMount() {
+    setNotification();
+    // Uncomment to reset local data:
+    // AsyncStorage.clear();
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <NavigationContainer theme={MyTheme}>
+          <CustomStatusBar backgroundColor={darkestGray} barStyle="light-content" />
+          <StackNav />
+        </NavigationContainer>
+      </Provider>
+    );
+  }
 }
+
+export default App;
