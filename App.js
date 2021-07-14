@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import CustomStatusBar from './components/CustomStatusBar';
-import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import reducer from './reducers';
 import middleware from './middleware';
+import { setNotification } from './utils/helpers';
+import CustomStatusBar from './components/CustomStatusBar';
 import { darkestGray } from './utils/colors';
 import DeckList from './screens/DeckList/DeckList';
 import Deck from './screens/Deck/Deck';
@@ -15,7 +16,6 @@ import AddDeck from './screens/AddDeck/AddDeck';
 import AddCard from './screens/AddCard/AddCard';
 import Quiz from './screens/Quiz/Quiz';
 import QuizScore from './screens/Quiz/components/QuizScore';
-import { setNotification } from './utils/helpers';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const MyTheme = {
@@ -28,6 +28,23 @@ const MyTheme = {
 
 // Create TabNavigator
 const Tab = createBottomTabNavigator();
+
+const createTabBarOptions = () => ({
+  activeTintColor: '#E8E8E8',
+  inactiveTintColor: '#6b6b6b',
+  style: {
+    backgroundColor: '#222831',
+    shadowColor: 'rgba(255,255,255,0.34)',
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowRadius: 6,
+    shadowOpacity: 1,
+    borderTopWidth: 0,
+    paddingTop: 8,
+  },
+});
 
 function TabNav() {
   return (
@@ -42,22 +59,7 @@ function TabNav() {
           }
         },
       })}
-      tabBarOptions={{
-        activeTintColor: '#E8E8E8',
-        inactiveTintColor: '#6b6b6b',
-        style: {
-          backgroundColor: '#222831',
-          shadowColor: 'rgba(255,255,255,0.34)',
-          shadowOffset: {
-            width: 0,
-            height: 3,
-          },
-          shadowRadius: 6,
-          shadowOpacity: 1,
-          borderTopWidth: 0,
-          paddingTop: 8,
-        },
-      }}
+      tabBarOptions={createTabBarOptions()}
     >
       <Tab.Screen name="DeckList" component={DeckList} options={{ title: 'Deck List' }} />
       <Tab.Screen name="AddDeck" component={AddDeck} options={{ title: 'Add Deck' }} />
@@ -68,6 +70,20 @@ function TabNav() {
 // Create StackNavigator
 const Stack = createStackNavigator();
 
+const createStackOptions = (headerBackTitleVisible = true, title = '', headerLeft) => ({
+  headerTintColor: '#E8E8E8',
+  headerStyle: {
+    backgroundColor: '#222831',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+  },
+  headerBackTitleVisible,
+  title,
+  headerLeft,
+});
+
 function StackNav() {
   return (
     <Stack.Navigator initialRouteName="DeckList">
@@ -76,68 +92,17 @@ function StackNav() {
         component={TabNav}
         options={{ headerShown: false, title: '' }}
       />
-      <Stack.Screen
-        name="Deck"
-        component={Deck}
-        options={() => ({
-          headerTintColor: '#E8E8E8',
-          headerStyle: {
-            backgroundColor: '#222831',
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-          },
-          headerBackTitleVisible: true,
-        })}
-      />
+      <Stack.Screen name="Deck" component={Deck} options={() => createStackOptions(true, 'Deck')} />
       <Stack.Screen
         name="AddCard"
         component={AddCard}
-        options={() => ({
-          headerTintColor: '#E8E8E8',
-          headerStyle: {
-            backgroundColor: '#222831',
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-          },
-          headerBackTitleVisible: true,
-          title: 'Add Card',
-        })}
+        options={createStackOptions(true, 'Add Card')}
       />
-      <Stack.Screen
-        name="Quiz"
-        component={Quiz}
-        options={() => ({
-          headerTintColor: '#E8E8E8',
-          headerStyle: {
-            backgroundColor: '#222831',
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-          },
-          headerBackTitleVisible: true,
-          title: 'Quiz',
-        })}
-      />
+      <Stack.Screen name="Quiz" component={Quiz} options={() => createStackOptions(true, 'Quiz')} />
       <Stack.Screen
         name="QuizScore"
         component={QuizScore}
-        options={() => ({
-          headerTintColor: '#E8E8E8',
-          headerStyle: {
-            backgroundColor: '#222831',
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-          },
-          headerBackTitleVisible: false,
-          title: 'Score',
-        })}
+        options={createStackOptions(false, 'Score', null)}
       />
     </Stack.Navigator>
   );
