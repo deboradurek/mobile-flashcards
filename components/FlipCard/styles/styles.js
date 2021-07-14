@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 export const QAHeaderContainer = styled.View`
   border-bottom-width: 1px;
-  border-bottom-color: #da0037;
+  border-bottom-color: ${(props) => props.theme.pink};
   width: 100%;
   align-items: center;
   padding-bottom: 15px;
 `;
 
 export const QAHeader = styled.Text`
-  color: #da0037;
+  color: ${(props) => props.theme.pink};
   font-weight: bold;
 `;
 

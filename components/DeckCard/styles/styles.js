@@ -9,6 +9,6 @@ export const TextCardDeck = styled.View`
 export const DeckHeader = styled.Text`
   font-family: 'HelveticaNeue-Medium';
   font-size: 28px;
-  color: #da0037;
+  color: ${(props) => props.theme.pink};
   margin-bottom: 20px;
 `;

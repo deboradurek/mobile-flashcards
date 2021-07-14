@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const TouchableOpacityGreen = styled.TouchableOpacity`
   padding: 20px 70px;
   margin: 40px 0;
-  background-color: #209f21;
+  background-color: ${(props) => props.theme.okGreen};
   border-radius: 12px;
 `;
 
 export const TouchableOpacityRed = styled.TouchableOpacity`
   padding: 20px 70px;
   margin: 40px 0;
-  background-color: #e82222;
+  background-color: ${(props) => props.theme.nonOkRed};
   border-radius: 12px;
 `;
 
@@ -19,7 +19,7 @@ export const TextTouchableOpacity = styled.TouchableOpacity`
 `;
 
 export const FilledTouchableOpacity = styled.TouchableOpacity`
-  background-color: #f96d00;
+  background-color: ${(props) => props.theme.orange};
   align-items: stretch;
   padding: 15px;
   margin-top: 18px;
@@ -28,6 +28,6 @@ export const FilledTouchableOpacity = styled.TouchableOpacity`
 `;
 
 export const OutlinedTouchableOpacity = styled(FilledTouchableOpacity)`
-  background-color: #393e46;
-  border: 2px solid #f96d00;
+  background-color: ${(props) => props.theme.mediumGray};
+  border: 2px solid ${(props) => props.theme.orange};
 `;
