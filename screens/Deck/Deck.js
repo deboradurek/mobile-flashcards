@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DeckCard from '../../components/DeckCard';
-import { FilledButton, OutlinedButton } from '../../components/StyledButtons';
-import { Container, DeckContainer, LargeButtonContainer } from '../../styles/shared';
+import DeckCard from '../../components/DeckCard/DeckCard';
+import { OutlinedButton, FilledButton } from '../../components/StyledButtons/StyledButtons';
+import { Container } from '../../styles/shared';
+import { DeckButtonContainer, DeckContainer } from './styles/styles';
 
 class Deck extends Component {
   render() {
@@ -12,14 +13,14 @@ class Deck extends Component {
         <DeckContainer>
           <DeckCard title={title} numCards={numCards} />
         </DeckContainer>
-        <LargeButtonContainer>
+        <DeckButtonContainer>
           <OutlinedButton onPress={() => this.props.navigation.navigate('AddCard', { title })}>
             Add Card
           </OutlinedButton>
           <FilledButton onPress={() => this.props.navigation.navigate('Quiz', { title })}>
             Start Quiz
           </FilledButton>
-        </LargeButtonContainer>
+        </DeckButtonContainer>
       </Container>
     );
   }

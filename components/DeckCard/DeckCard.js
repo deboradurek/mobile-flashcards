@@ -1,5 +1,6 @@
 import React from 'react';
-import { DeckHeader, TextCardDeck, DarkThinText } from '../styles/shared';
+import { DarkThinText } from '../../styles/shared';
+import { DeckHeader, TextCardDeck } from './styles/styles';
 
 function DeckCard(props) {
   const { title, numCards } = props;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addNewDeck } from '../../actions';
-import Title from '../../components/Title';
-import { FilledButton } from '../../components/StyledButtons';
+import Title from '../../components/Title/Title';
+import { FilledButton } from '../../components/StyledButtons/StyledButtons';
 import {
   Container,
   FullWidthContainer,
@@ -33,7 +33,6 @@ class AddDeck extends Component {
       deckName: '',
     });
 
-    // Navigate to DeckList
     this.props.navigation.navigate('DeckList');
   };
 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProgressBar from './components/ProgressBar';
-import FlipCard from '../../components/FlipCard';
-import { QuizButtonGreen, QuizButtonRed } from '../../components/StyledButtons';
+import FlipCard from '../../components/FlipCard/FlipCard';
+import { QuizButtonGreen, QuizButtonRed } from '../../components/StyledButtons/StyledButtons';
 import { Container, FullWidthContainer } from '../../styles/shared';
 import { QAButtonContainer } from './styles/styles';
 

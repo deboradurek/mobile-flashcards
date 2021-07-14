@@ -21,25 +21,6 @@ export const CardScore = styled.View`
   width: 100%;
 `;
 
-export const QAHeaderContainer = styled.View`
-  border-bottom-width: 1px;
-  border-bottom-color: #da0037;
-  width: 100%;
-  align-items: center;
-  padding-bottom: 15px;
-`;
-
-export const QAHeader = styled.Text`
-  color: #da0037;
-  font-weight: bold;
-`;
-
-export const QAText = styled.Text`
-  font-family: 'HelveticaNeue-Medium';
-  font-size: 30px;
-  text-align: center;
-`;
-
 export const TextScore = styled.Text`
   font-family: 'HelveticaNeue-Bold';
   font-size: 90px;
@@ -53,18 +34,4 @@ export const QAButtonContainer = styled.View`
 
 export const ScoreButtonContainer = styled.View`
   margin-top: 50px;
-`;
-
-export const TouchableOpacityGreen = styled.TouchableOpacity`
-  padding: 20px 70px;
-  margin: 40px 0;
-  background-color: #209f21;
-  border-radius: 12px;
-`;
-
-export const TouchableOpacityRed = styled.TouchableOpacity`
-  padding: 20px 70px;
-  margin: 40px 0;
-  background-color: #e82222;
-  border-radius: 12px;
 `;

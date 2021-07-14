@@ -1,6 +1,12 @@
 import React from 'react';
-import { TouchableOpacityGreen, TouchableOpacityRed } from '../screens/Quiz/styles/styles';
-import { FilledTouchableOpacity, LightText, OutlinedTouchableOpacity } from '../styles/shared';
+import { LightText, DarkThinText } from '../../styles/shared';
+import {
+  TouchableOpacityGreen,
+  TouchableOpacityRed,
+  TextTouchableOpacity,
+  FilledTouchableOpacity,
+  OutlinedTouchableOpacity,
+} from './styles/styles';
 
 export function FilledButton({ children, onPress, ...props }) {
   return (
@@ -31,5 +37,13 @@ export function QuizButtonRed({ children, onPress, ...props }) {
     <TouchableOpacityRed onPress={onPress} {...props}>
       <LightText>{children}</LightText>
     </TouchableOpacityRed>
+  );
+}
+
+export function TextButton({ children, onPress, ...props }) {
+  return (
+    <TextTouchableOpacity onPress={onPress} {...props}>
+      <DarkThinText>{children}</DarkThinText>
+    </TextTouchableOpacity>
   );
 }

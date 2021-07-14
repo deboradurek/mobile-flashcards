@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { MainTitle } from '../styles/shared';
+import { MainTitle } from './styles/styles';
 
 function Title({ children }) {
   return (

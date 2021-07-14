@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Title from '../../components/Title';
-import { FilledButton } from '../../components/StyledButtons';
+import { addCardToDeck } from '../../actions';
+import Title from '../../components/Title/Title';
+import { FilledButton } from '../../components/StyledButtons/StyledButtons';
 import {
   Container,
   FullWidthContainer,
   InputContainer,
   StyledTextInput,
 } from '../../styles/shared';
-import { addCardToDeck } from '../../actions';
 
 class AddCard extends Component {
   state = {

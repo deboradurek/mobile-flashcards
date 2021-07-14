@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Title from '../../../components/Title';
 import ProgressBar from './ProgressBar';
-import { FilledButton, OutlinedButton } from '../../../components/StyledButtons';
+import Title from '../../../components/Title/Title';
+import { OutlinedButton, FilledButton } from '../../../components/StyledButtons/StyledButtons';
+import { clearAllNotifications, setNotification } from '../../../utils/helpers';
 import { Container, FullWidthContainer } from '../../../styles/shared';
 import { CardScore, ScoreButtonContainer, TextScore } from '../styles/styles';
-import { clearAllNotifications, setNotification } from '../../../utils/helpers';
 
 class QuizScore extends Component {
   componentDidMount() {

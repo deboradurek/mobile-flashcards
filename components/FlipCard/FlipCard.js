@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Animated, Easing, StyleSheet, View } from 'react-native';
-import { QAHeader, QAHeaderContainer, QAText } from '../screens/Quiz/styles/styles';
-import TextButton from './TextButton';
+import { QAHeader, QAHeaderContainer, QAText } from './styles/styles';
+import { TextButton } from '../StyledButtons/StyledButtons';
 
 class FlipCard extends Component {
   state = {

@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import { getDecks } from '../../actions';
-import Title from '../../components/Title';
-import DeckCard from '../../components/DeckCard';
-import { Container, FullWidthContainer, SmallCardContainer } from '../../styles/shared';
+import Title from '../../components/Title/Title';
+import DeckCard from '../../components/DeckCard/DeckCard';
+import { Container, FullWidthContainer } from '../../styles/shared';
+import { SmallCardContainer } from './styles/styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class DeckList extends Component {
@@ -44,7 +45,7 @@ function mapStateToProps({ decks }) {
   return {
     decks: Object.values(decks).map((deck) => ({
       title: deck.title,
-      numCards: deck.questions.length,
+      numCards: deck.questions ? deck.questions.length : 0,
     })),
   };
 }
