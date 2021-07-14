@@ -12,9 +12,6 @@ export async function fetchAllDecks() {
   }
 }
 
-// Return the deck associated with the id.
-export function fetchSingleDeck(id) {}
-
 // Add a new deck name to the list of decks.
 export async function saveNewDeckTitle(title) {
   try {
