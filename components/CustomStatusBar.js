@@ -1,13 +1,14 @@
 import React from 'react';
 import { StatusBar, View } from 'react-native';
 import Constants from 'expo-constants';
+import { withTheme } from 'styled-components';
 
-function CustomStatusBar({ backgroundColor, ...props }) {
+function CustomStatusBar({ theme, ...props }) {
   return (
-    <View style={{ backgroundColor, height: Constants.statusBarHeight }}>
+    <View style={{ backgroundColor: theme.darkGray, height: Constants.statusBarHeight }}>
       <StatusBar {...props} />
     </View>
   );
 }
 
-export default CustomStatusBar;
+export default withTheme(CustomStatusBar);

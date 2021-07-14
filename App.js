@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createStore } from 'redux';
@@ -9,32 +9,25 @@ import reducer from './reducers';
 import middleware from './middleware';
 import { setNotification } from './utils/helpers';
 import CustomStatusBar from './components/CustomStatusBar';
-import { darkestGray } from './utils/colors';
 import DeckList from './screens/DeckList/DeckList';
 import Deck from './screens/Deck/Deck';
 import AddDeck from './screens/AddDeck/AddDeck';
 import AddCard from './screens/AddCard/AddCard';
 import Quiz from './screens/Quiz/Quiz';
 import QuizScore from './screens/Quiz/components/QuizScore';
+import { ThemeProvider, withTheme } from 'styled-components';
+import { styledTheme, navTheme } from './styles/theme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-const MyTheme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    background: '#393E46',
-  },
-};
 
 // Create TabNavigator
 const Tab = createBottomTabNavigator();
 
-const createTabBarOptions = () => ({
-  activeTintColor: '#E8E8E8',
-  inactiveTintColor: '#6b6b6b',
+const createTabBarOptions = (theme) => ({
+  activeTintColor: theme.lightGray,
+  inactiveTintColor: theme.inactiveTintColorTab,
   style: {
-    backgroundColor: '#222831',
-    shadowColor: 'rgba(255,255,255,0.34)',
+    backgroundColor: theme.darkGray,
+    shadowColor: theme.shadowColorWhite,
     shadowOffset: {
       width: 0,
       height: 3,
@@ -46,7 +39,7 @@ const createTabBarOptions = () => ({
   },
 });
 
-function TabNav() {
+const TabNav = withTheme(({ theme }) => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -59,32 +52,36 @@ function TabNav() {
           }
         },
       })}
-      tabBarOptions={createTabBarOptions()}
+      tabBarOptions={createTabBarOptions(theme)}
     >
       <Tab.Screen name="DeckList" component={DeckList} options={{ title: 'Deck List' }} />
       <Tab.Screen name="AddDeck" component={AddDeck} options={{ title: 'Add Deck' }} />
     </Tab.Navigator>
   );
-}
+});
 
 // Create StackNavigator
 const Stack = createStackNavigator();
 
-const createStackOptions = (headerBackTitleVisible = true, title = '', headerLeft) => ({
-  headerTintColor: '#E8E8E8',
-  headerStyle: {
-    backgroundColor: '#222831',
-    shadowOffset: {
-      width: 0,
-      height: 0,
+const createStackOptions =
+  (theme) =>
+  (headerBackTitleVisible = true, title = '', headerLeft) => ({
+    headerTintColor: theme.lightGray,
+    headerStyle: {
+      backgroundColor: theme.darkGray,
+      shadowOffset: {
+        width: 0,
+        height: 0,
+      },
     },
-  },
-  headerBackTitleVisible,
-  title,
-  headerLeft,
-});
+    headerBackTitleVisible,
+    title,
+    headerLeft,
+  });
 
-function StackNav() {
+const StackNav = withTheme(({ theme }) => {
+  const getOptions = createStackOptions(theme);
+
   return (
     <Stack.Navigator initialRouteName="DeckList">
       <Stack.Screen
@@ -92,22 +89,19 @@ function StackNav() {
         component={TabNav}
         options={{ headerShown: false, title: '' }}
       />
-      <Stack.Screen name="Deck" component={Deck} options={() => createStackOptions(true, 'Deck')} />
-      <Stack.Screen
-        name="AddCard"
-        component={AddCard}
-        options={createStackOptions(true, 'Add Card')}
-      />
-      <Stack.Screen name="Quiz" component={Quiz} options={() => createStackOptions(true, 'Quiz')} />
+      <Stack.Screen name="Deck" component={Deck} options={getOptions(true, 'Deck')} />
+      <Stack.Screen name="AddCard" component={AddCard} options={getOptions(true, 'Add Card')} />
+      <Stack.Screen name="Quiz" component={Quiz} options={getOptions(true, 'Quiz')} />
       <Stack.Screen
         name="QuizScore"
         component={QuizScore}
-        options={createStackOptions(false, 'Score', null)}
+        options={getOptions(false, 'Score', null)}
       />
     </Stack.Navigator>
   );
-}
+});
 
+// Redux Store
 const store = createStore(reducer, middleware);
 
 class App extends Component {
@@ -120,10 +114,12 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <NavigationContainer theme={MyTheme}>
-          <CustomStatusBar backgroundColor={darkestGray} barStyle="light-content" />
-          <StackNav />
-        </NavigationContainer>
+        <ThemeProvider theme={styledTheme}>
+          <NavigationContainer theme={navTheme}>
+            <CustomStatusBar barStyle="light-content" />
+            <StackNav />
+          </NavigationContainer>
+        </ThemeProvider>
       </Provider>
     );
   }
