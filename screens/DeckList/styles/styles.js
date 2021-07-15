@@ -15,3 +15,16 @@ export const ContainerFlatlist = styled.View`
   align-items: center;
   padding: 50px 20px 20px;
 `;
+
+export const CenteredContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const DeckListTitle = styled.Text`
+  font-size: 36px;
+  text-align: center;
+  font-family: 'HelveticaNeue-Bold';
+  color: ${(props) => props.theme.lightGray};
+`;

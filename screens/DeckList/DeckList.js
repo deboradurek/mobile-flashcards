@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, FlatList } from 'react-native';
+import { TouchableOpacity, FlatList, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { getDecks } from '../../actions';
 import Title from '../../components/Title/Title';
 import DeckCard from '../../components/DeckCard/DeckCard';
-import { Container, FullWidthContainer } from '../../styles/shared';
-import { ContainerFlatlist, SmallCardContainer } from './styles/styles';
+import { FullWidthContainer, LightText } from '../../styles/shared';
+import {
+  CenteredContainer,
+  ContainerFlatlist,
+  DeckListTitle,
+  SmallCardContainer,
+} from './styles/styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class DeckList extends Component {
@@ -23,21 +28,29 @@ class DeckList extends Component {
 
     return (
       <ContainerFlatlist>
-        <Title>Your Decks</Title>
+        {decks.length > 0 ? <Title>Your Decks</Title> : <DeckListTitle>Your Decks</DeckListTitle>}
         <FullWidthContainer>
-          <FlatList
-            data={decks}
-            keyExtractor={(item) => item.title}
-            renderItem={({ item }) => (
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('Deck', { title: item.title })}
-              >
-                <SmallCardContainer>
-                  <DeckCard title={item.title} numCards={item.numCards} />
-                </SmallCardContainer>
-              </TouchableOpacity>
-            )}
-          />
+          {decks.length > 0 ? (
+            <FlatList
+              data={decks}
+              keyExtractor={(item) => item.title}
+              renderItem={({ item }) => (
+                <TouchableOpacity
+                  onPress={() => this.props.navigation.navigate('Deck', { title: item.title })}
+                >
+                  <SmallCardContainer>
+                    <DeckCard title={item.title} numCards={item.numCards} />
+                  </SmallCardContainer>
+                </TouchableOpacity>
+              )}
+            />
+          ) : (
+            <CenteredContainer>
+              <Image source={require('../../images/box.png')} style={{ marginBottom: 20 }}></Image>
+              <LightText>Your deck list is empty!</LightText>
+              <LightText>Add a new deck to start playing.</LightText>
+            </CenteredContainer>
+          )}
         </FullWidthContainer>
       </ContainerFlatlist>
     );
