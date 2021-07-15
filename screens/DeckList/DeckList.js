@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import { getDecks } from '../../actions';
 import Title from '../../components/Title/Title';
 import DeckCard from '../../components/DeckCard/DeckCard';
 import { Container, FullWidthContainer } from '../../styles/shared';
-import { SmallCardContainer } from './styles/styles';
+import { ContainerFlatlist, SmallCardContainer } from './styles/styles';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 class DeckList extends Component {
@@ -22,21 +22,24 @@ class DeckList extends Component {
     const { decks } = this.props;
 
     return (
-      <Container>
+      <ContainerFlatlist>
+        <Title>Your Decks</Title>
         <FullWidthContainer>
-          <Title>Your Decks</Title>
-          {decks.map((deck) => (
-            <TouchableOpacity
-              onPress={() => this.props.navigation.navigate('Deck', { title: deck.title })}
-              key={deck.title}
-            >
-              <SmallCardContainer>
-                <DeckCard title={deck.title} numCards={deck.numCards} />
-              </SmallCardContainer>
-            </TouchableOpacity>
-          ))}
+          <FlatList
+            data={decks}
+            keyExtractor={(item) => item.title}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('Deck', { title: item.title })}
+              >
+                <SmallCardContainer>
+                  <DeckCard title={item.title} numCards={item.numCards} />
+                </SmallCardContainer>
+              </TouchableOpacity>
+            )}
+          />
         </FullWidthContainer>
-      </Container>
+      </ContainerFlatlist>
     );
   }
 }
