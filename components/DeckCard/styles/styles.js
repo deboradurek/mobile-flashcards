@@ -11,4 +11,5 @@ export const DeckHeader = styled.Text`
   font-size: 28px;
   color: ${(props) => props.theme.pink};
   margin-bottom: 20px;
+  text-align: center;
 `;
