@@ -5,86 +5,59 @@ import { TextButton } from '../StyledButtons/StyledButtons';
 
 class FlipCard extends Component {
   state = {
-    isAnimatedShowing: false,
-    flipSideOne: new Animated.Value(1),
-    flipSideTwo: new Animated.Value(0),
+    isFlipping: false,
+    rotate: new Animated.Value(Number(this.props.flip)),
   };
 
-  componentDidUpdate(prevProps) {
-    const { flip } = this.props;
+  flipAnimated = (isFlipped) => {
+    setTimeout(() => {
+      this.props.onFlip();
+    }, 120);
 
-    if (flip !== prevProps.flip) {
-      if (flip === true) {
-        this.flipAnimated({ flipOpen: true, flipSideTwoValue: 0, flipSideOneValue: 1 });
-      }
-
-      if (flip === false) {
-        this.flipAnimated({ flipOpen: false, flipSideTwoValue: 1, flipSideOneValue: 0 });
-      }
-    }
-  }
-
-  flipAnimated = ({ flipOpen, flipSideTwoValue, flipSideOneValue }) => {
-    Animated.sequence([
-      Animated.timing(flipOpen ? this.state.flipSideTwo : this.state.flipSideOne, {
-        toValue: flipOpen ? flipSideTwoValue : flipSideOneValue,
-        duration: 150,
-        useNativeDriver: true,
-        easing: Easing.bezier(0.445, 0.05, 0.55, 0.95),
-      }),
-      Animated.timing(flipOpen ? this.state.flipSideOne : this.state.flipSideTwo, {
-        toValue: flipOpen ? flipSideOneValue : flipSideTwoValue,
-        duration: 75,
-        useNativeDriver: true,
-        easing: Easing.bezier(0.445, 0.05, 0.55, 0.95),
-      }),
-    ]).start(() =>
-      this.setState({
-        isAnimatedShowing: false,
-      })
-    );
+    Animated.spring(this.state.rotate, {
+      toValue: Number(isFlipped),
+      friction: 10,
+      useNativeDriver: true,
+    }).start(() => {
+      this.setState({ isFlipping: false });
+    });
   };
 
   handlePress = () => {
-    const { onFlip } = this.props;
-
-    if (this.state.isAnimatedShowing === true) {
+    const { isFlipping } = this.state;
+    const { flip } = this.props;
+    if (isFlipping === true) {
       return;
     }
+
     this.setState({
-      isAnimatedShowing: true,
+      isFlipping: true,
     });
 
-    onFlip();
+    this.flipAnimated(!flip);
   };
 
   render() {
-    const { frontSide, backSide, flip } = this.props;
+    const { flip } = this.props;
+    const { frontSide, backSide } = this.props;
 
-    const flipFront = {
+    const animation = {
       transform: [
+        { perspective: 1000 },
         {
-          rotateY: this.state.flipSideOne.interpolate({
+          rotateY: this.state.rotate.interpolate({
             inputRange: [0, 1],
-            outputRange: ['90deg', '0deg'],
+            outputRange: ['0deg', '180deg'],
           }),
         },
       ],
     };
 
-    const flipBack = {
-      transform: [
-        {
-          rotateY: this.state.flipSideTwo.interpolate({
-            inputRange: [0, 1],
-            outputRange: ['-90deg', '0deg'],
-          }),
-        },
-      ],
-    };
+    if (flip) {
+      animation.transform.push({ scaleX: -1 });
+    }
 
-    const animation = flip ? flipFront : flipBack;
-    const { header, text, buttonText } = flip ? frontSide : backSide;
+    const { header, text, buttonText } = flip ? backSide : frontSide;
 
     return (
       <Animated.View style={[styles.flipContainer, animation, { width: '100%', height: '100%' }]}>

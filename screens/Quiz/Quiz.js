@@ -10,7 +10,7 @@ class Quiz extends Component {
   state = {
     indexCard: 0,
     numCorrect: 0,
-    flip: true,
+    flip: false,
   };
 
   handleAnswer = (userAnswer) => () => {
@@ -49,10 +49,12 @@ class Quiz extends Component {
   };
 
   reset = () => {
-    this.setState({
-      indexCard: 0,
-      numCorrect: 0,
-    });
+    setTimeout(() => {
+      this.setState({
+        indexCard: 0,
+        numCorrect: 0,
+      });
+    }, 500);
   };
 
   render() {
@@ -85,7 +87,7 @@ class Quiz extends Component {
               flip={flip}
             />
           </FullWidthContainer>
-          {flip === true && (
+          {!flip && (
             <QAButtonContainer>
               <QuizButtonGreen onPress={this.handleAnswer('Yes!')}>V</QuizButtonGreen>
               <QuizButtonRed onPress={this.handleAnswer('No!')}>X</QuizButtonRed>
