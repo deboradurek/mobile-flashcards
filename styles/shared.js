@@ -20,8 +20,8 @@ export const StyledTextInput = styled.TextInput`
   border-radius: 8px;
   border-width: 1px;
   background-color: ${(props) => props.theme.lightGray};
-  padding: 48px 15px;
-  margin-bottom: 60px;
+  padding: 30px 15px;
+  margin-bottom: 40px;
   font-family: 'HelveticaNeue-Medium';
   font-size: 20px;
   color: ${(props) => props.theme.pink};

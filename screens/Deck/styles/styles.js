@@ -12,6 +12,5 @@ export const DeckContainer = styled.View`
   justify-content: center;
   width: 100%;
   box-shadow: 0px 0px 2px ${(props) => props.theme.shadowColorWhite};
-  min-height: 350px;
-  flex: 1;
+  flex: 3;
 `;
