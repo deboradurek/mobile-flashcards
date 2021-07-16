@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, Easing, StyleSheet, View } from 'react-native';
+import { Animated, StyleSheet, View } from 'react-native';
 import { QAHeader, QAHeaderContainer, QAText } from './styles/styles';
 import { TextButton } from '../StyledButtons/StyledButtons';
 
